@@ -70,7 +70,7 @@ nav.scrolled {
 }
 .mobile-nav a:hover { color: var(--gold); }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   nav { padding: 22px 28px; }
   nav.scrolled { padding: 14px 28px; }
   .nav-links { display: none; }

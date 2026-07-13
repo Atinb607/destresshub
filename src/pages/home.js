@@ -1,7 +1,7 @@
 import { renderNavbar, initNavbar } from '../components/navbar.js'
 import { renderFooter } from '../components/footer.js'
 import { sectionHeader } from '../components/section-header.js'
-import { initRevealAnimations, initCounterAnimations, retriggerReveals } from '../utils/animations.js'
+import { initRevealAnimations, initCounterAnimations } from '../utils/animations.js'
 import { initParallax, cleanupParallax, initGalleryDrag } from '../utils/parallax.js'
 import { refreshCursorHovers } from '../components/cursor.js'
 import { waLink, toast } from '../utils/helpers.js'
@@ -401,246 +401,17 @@ export async function homePage() {
     <!-- Pricing Section -->
     <section id="pricing">
       <div class="pricing-inner">
-        <div class="pricing-header reveal up">
-          ${sectionHeader({ tag: 'Investment', title: 'Transparent pricing for<br/><em>invaluable peace.</em>', theme: 'light' })}
-        </div>
-
-        <div class="pricing-tabs reveal scale">
-          <button class="p-tab active" data-tab="offline">Offline</button>
-          <button class="p-tab" data-tab="online">Online</button>
-          <button class="p-tab" data-tab="corporate">Corporate</button>
-          <button class="p-tab" data-tab="workshops">Workshops</button>
-        </div>
-
-        <!-- Offline Pricing -->
-        <div class="pricing-panel active" id="panel-offline">
-          <h3 class="pricing-cat-title reveal up">Offline Sessions</h3>
-          <div class="pricing-grid cols-2">
-            <div class="p-card reveal up d1">
-              <div class="p-card-badge">Basic</div>
-              <h4 class="p-plan-name">1 Session</h4>
-              <div class="p-price"><sup>₹</sup>1500<span>/person</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> 45 Min Session</li>
-                <li class="p-detail-row"><span>🧘</span> 1-5 People</li>
-                <li class="p-detail-row"><span>😄</span> Basic Laughter Exercises</li>
-              </ul>
-              <a href="${waLink('Hi! I want to book 1 offline session (₹1500/person).')}" target="_blank" class="p-book-btn">Book Plan</a>
-            </div>
-            <div class="p-card reveal up d2">
-              <div class="p-card-badge">Standard</div>
-              <h4 class="p-plan-name">1 Session</h4>
-              <div class="p-price"><sup>₹</sup>1200<span>/person</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> 45 Min Sessions</li>
-                <li class="p-detail-row"><span>🧘</span> 6-10 People</li>
-                <li class="p-detail-row"><span>😌</span> Advanced Relaxation</li>
-              </ul>
-              <a href="${waLink('Hi! I want to book 12 offline sessions (₹1200/person).')}" target="_blank" class="p-book-btn">Book Plan</a>
-            </div>
-            
+        <div class="pricing-header reveal up" style="margin-bottom: 0;">
+          ${sectionHeader({
+            tag: 'Investment',
+            title: 'CUSTOM PRICING FOR EVERY TEAM',
+            description: "Every session is tailored to your team size and goals. Get in touch, we'll share a plan that fits.",
+            theme: 'light'
+          })}
+          <div style="margin-top: 24px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <a href="${waLink("Hi! I'd like to book a session.")}" target="_blank" class="btn-gold">Contact Us</a>
+            <span style="font-size: 0.75rem; color: var(--text-body); opacity: 0.7; font-weight: 300;">We'll get back to you personally.</span>
           </div>
-        </div>
-
-        <!-- Online Pricing -->
-        <div class="pricing-panel" id="panel-online">
-          <h3 class="pricing-cat-title">Online Sessions</h3>
-          <div class="pricing-grid">
-            <div class="p-card reveal up d1">
-              <div class="p-card-badge">Euphoria</div>
-              <h4 class="p-plan-name">Plan-1</h4>
-              <div class="p-price"><sup>₹</sup>999<span>/Session</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> 45 Minutes</li>
-                <li class="p-detail-row"><span>👥</span> 1-4 People</li>
-                <li class="p-detail-row"><span>💻</span> Online Live Session</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book Euphoria Plan-1 (₹999 per Session).")}" target="_blank" class="p-book-btn">Book Plan</a>
-            </div>
-            <div class="p-card reveal up d2">
-              <div class="p-card-badge">Euphoria</div>
-              <h4 class="p-plan-name">Plan-2</h4>
-              <div class="p-price"><sup>₹</sup>1999<span>/Session</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> 45 Minutes</li>
-                <li class="p-detail-row"><span>👥</span> 5-10 People</li>
-                <li class="p-detail-row"><span>💻</span> Online Live Session</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book Euphoria Plan-2 (₹1999 per Session).")}" target="_blank" class="p-book-btn">Book Plan</a>
-            </div>
-            <div class="p-card reveal up d3">
-              <div class="p-card-badge">Euphoria</div>
-              <h4 class="p-plan-name">Plan-3</h4>
-              <div class="p-price"><sup>₹</sup>3999<span>/Session</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> 45 Minutes</li>
-                <li class="p-detail-row"><span>👥</span> 11-25 People</li>
-                <li class="p-detail-row"><span>💻</span> Online Live Session</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book Euphoria Plan-3 (₹3999 per Session).")}" target="_blank" class="p-book-btn">Book Plan</a>
-            </div>
-            <div class="p-card reveal up d4">
-              <div class="p-card-badge">Euphoria</div>
-              <h4 class="p-plan-name">Plan-4</h4>
-              <div class="p-price"><sup>₹</sup>5999<span>/Session</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> 45 Minutes</li>
-                <li class="p-detail-row"><span>👥</span> 26-50 People</li>
-                <li class="p-detail-row"><span>💻</span> Online Live Session</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book Euphoria Plan-4 (₹5999 per Session).")}" target="_blank" class="p-book-btn">Book Plan</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Corporate Pricing -->
-        <div class="pricing-panel" id="panel-corporate">
-          <h3 class="pricing-cat-title">Corporate Plans</h3>
-          <div class="pricing-grid">
-            <div class="p-card reveal up d1">
-              <div class="p-card-badge">Corporate</div>
-              <h4 class="p-plan-name">Giggle Plan</h4>
-              <div class="p-price"><sup>₹</sup>5,999<span>/session</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> 45 Minutes</li>
-                <li class="p-detail-row"><span>👥</span> 10 – 19 People</li>
-                <li class="p-detail-row"><span>📍</span> Offline – At Your Premises</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book the Giggle Plan (₹5,999 per session).")}" target="_blank" class="p-book-btn">Enquire Now</a>
-            </div>
-            <div class="p-card reveal up d2">
-              <div class="p-card-badge">Corporate</div>
-              <h4 class="p-plan-name">Double Giggle Plan</h4>
-              <div class="p-price"><sup>₹</sup>11,999<span>/session</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> 90 Minutes</li>
-                <li class="p-detail-row"><span>👥</span> 10 – 19 People</li>
-                <li class="p-detail-row"><span>📍</span> Offline – At Your Premises</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book the Double Giggle Plan (₹11,999 per session).")}" target="_blank" class="p-book-btn">Enquire Now</a>
-            </div>
-            <div class="p-card reveal up d3">
-              <div class="p-card-badge">Corporate</div>
-              <h4 class="p-plan-name">Chuckle Plan</h4>
-              <div class="p-price"><sup>₹</sup>20,999<span>/month</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> 45 Min per session</li>
-                <li class="p-detail-row"><span>👥</span> Up to 40 People</li>
-                <li class="p-detail-row"><span>📅</span> 4 Sessions total</li>
-                <li class="p-detail-row"><span>📍</span> Offline – At Your Premises</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book the Chuckle Plan up to 40 people (₹20,999 per month).")}" target="_blank" class="p-book-btn">Enquire Now</a>
-            </div>
-            <div class="p-card reveal up d4">
-              <div class="p-card-badge">Corporate</div>
-              <h4 class="p-plan-name">Chuckle Plan</h4>
-              <div class="p-price"><sup>₹</sup>30,999<span>/month</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> 45 Min per session</li>
-                <li class="p-detail-row"><span>👥</span> 41 – 100 People</li>
-                <li class="p-detail-row"><span>📅</span> 4 Sessions total</li>
-                <li class="p-detail-row"><span>📍</span> Offline – At Your Premises</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book the Chuckle Plan for 41-100 people (₹30,999 per month).")}" target="_blank" class="p-book-btn">Enquire Now</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Workshops Pricing -->
-        <div class="pricing-panel" id="panel-workshops">
-          <h3 class="pricing-cat-title" style="margin-bottom:24px;">Half Day Sessions</h3>
-          <div class="pricing-grid cols-3" style="margin-bottom:60px;">
-            <div class="p-card reveal up d1">
-              <div class="p-card-badge">Half Day</div>
-              <h4 class="p-plan-name">Cheerful Plan-1</h4>
-              <div class="p-price"><sup>₹</sup>9,999<span>/session</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> Half-day Workshop</li>
-                <li class="p-detail-row"><span>👥</span> Up to 20 People</li>
-                <li class="p-detail-row"><span>📍</span> Offline – At Your Premises</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book the Cheerful Plan-1 half-day workshop (₹9,999).")}" target="_blank" class="p-book-btn">Enquire Now</a>
-            </div>
-            <div class="p-card reveal up d2">
-              <div class="p-card-badge">Half Day</div>
-              <h4 class="p-plan-name">Cheerful Plan-2</h4>
-              <div class="p-price"><sup>₹</sup>15,999<span>/session</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> Half-day Workshop</li>
-                <li class="p-detail-row"><span>👥</span> 20-40 People</li>
-                <li class="p-detail-row"><span>📍</span> Offline – At Your Premises</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book the Cheerful Plan-2 half-day workshop (₹15,999).")}" target="_blank" class="p-book-btn">Enquire Now</a>
-            </div>
-            <div class="p-card reveal up d3">
-              <div class="p-card-badge">Half Day</div>
-              <h4 class="p-plan-name">Cheerful Plan-3</h4>
-              <div class="p-price"><sup>₹</sup>20,999<span>/session</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> Half-day Workshop</li>
-                <li class="p-detail-row"><span>👥</span> 40-100 People</li>
-                <li class="p-detail-row"><span>📍</span> Offline – At Your Premises</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book the Cheerful Plan-3 half-day workshop (₹20,999).")}" target="_blank" class="p-book-btn">Enquire Now</a>
-            </div>
-          </div>
-
-          <h3 class="pricing-cat-title" style="margin-bottom:24px;">Full Day Sessions</h3>
-          <div class="pricing-grid cols-3">
-            <div class="p-card reveal up d1">
-              <div class="p-card-badge">Full Day</div>
-              <h4 class="p-plan-name">Joyful Plan-1</h4>
-              <div class="p-price"><sup>₹</sup>17,999<span>/session</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> Full-day Workshop</li>
-                <li class="p-detail-row"><span>👥</span> Up to 20 People</li>
-                <li class="p-detail-row"><span>📍</span> Offline – At Your Premises</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book the Joyful Plan-1 full-day workshop (₹17,999).")}" target="_blank" class="p-book-btn">Enquire Now</a>
-            </div>
-            <div class="p-card reveal up d2">
-              <div class="p-card-badge">Full Day</div>
-              <h4 class="p-plan-name">Joyful Plan-2</h4>
-              <div class="p-price"><sup>₹</sup>24,999<span>/session</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> Full-day Workshop</li>
-                <li class="p-detail-row"><span>👥</span> 21-40 People</li>
-                <li class="p-detail-row"><span>📍</span> Offline – At Your Premises</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book the Joyful Plan-2 full-day workshop (₹24,999).")}" target="_blank" class="p-book-btn">Enquire Now</a>
-            </div>
-            <div class="p-card reveal up d3">
-              <div class="p-card-badge">Full Day</div>
-              <h4 class="p-plan-name">Joyful Plan-3</h4>
-              <div class="p-price"><sup>₹</sup>34,999<span>/session</span></div>
-              <div class="p-divider"></div>
-              <ul class="p-details">
-                <li class="p-detail-row"><span>⏱</span> Full-day Workshop</li>
-                <li class="p-detail-row"><span>👥</span> 41-100 People</li>
-                <li class="p-detail-row"><span>📍</span> Offline – At Your Premises</li>
-              </ul>
-              <a href="${waLink("Hi! I want to book the Joyful Plan-3 full-day workshop (₹34,999).")}" target="_blank" class="p-book-btn">Enquire Now</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="pricing-note reveal up">
-          <strong>Note:</strong> All sessions are conducted by Certified Laughter Wellness Coach. Custom packages are available for larger groups or special requirements. Please contact us to discuss your specific needs.
         </div>
       </div>
     </section>
@@ -834,21 +605,7 @@ export async function homePage() {
     initGalleryDrag()
     refreshCursorHovers()
 
-    // Pricing Tabs
-    const tabs = document.querySelectorAll('.p-tab')
-    const panels = document.querySelectorAll('.pricing-panel')
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'))
-        panels.forEach(p => p.classList.remove('active'))
-        tab.classList.add('active')
-        const targetId = 'panel-' + tab.dataset.tab
-        const targetPanel = document.getElementById(targetId)
-        targetPanel.classList.add('active')
-        retriggerReveals(targetPanel)
-        refreshCursorHovers()
-      })
-    })
+
 
     // Lead Form Multi-step Logic
     let currentStep = 1

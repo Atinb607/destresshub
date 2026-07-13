@@ -120,33 +120,40 @@
 .g-frame:hover .g-label { transform: translateY(0); }
 
 /* Pricing Section */
-#pricing { background: var(--bg-light); padding: 120px 0; }
+#pricing { background: var(--bg-light); padding: 140px 0; }
 .pricing-inner { max-width: 1200px; margin: auto; padding: 0 72px; }
-.pricing-header { text-align: center; margin-bottom: 64px; display: flex; flex-direction: column; align-items: center; }
-.pricing-tabs { display: flex; justify-content: center; gap: 4px; background: var(--bg-off); padding: 6px; border-radius: 4px; margin-bottom: 64px; width: max-content; margin-left: auto; margin-right: auto; }
-.p-tab { background: transparent; border: none; padding: 12px 24px; font-family: 'Jost', sans-serif; font-size: .8rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-body); cursor: pointer; border-radius: 2px; transition: all .3s; }
-.p-tab.active { background: var(--gold); color: var(--bg-dark); }
-.pricing-panel { display: none; }
-.pricing-panel.active { display: block; }
-.pricing-cat-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--text-dark); margin-bottom: 32px; font-weight: 400; text-align: center; }
-.pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
-.pricing-grid.cols-2 { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin: auto; }
-.pricing-grid.cols-3 { grid-template-columns: repeat(3, 1fr); max-width: 1000px; margin: auto; }
-.p-card { background: var(--bg-dark); padding: 36px 32px; display: flex; flex-direction: column; position: relative; transition: transform .4s ease; }
-.p-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .4s ease; }
-.p-card:hover { transform: translateY(-5px); }
-.p-card:hover::before { transform: scaleX(1); }
-.p-card-badge { font-size: .65rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-.p-plan-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--text-light); margin-bottom: 12px; }
-.p-price { font-size: 2.4rem; font-weight: 300; color: var(--gold); font-family: 'Jost', sans-serif; line-height: 1; margin-bottom: 24px; }
-.p-price sup { font-size: 1rem; top: -1em; }
-.p-price span { font-size: .8rem; color: var(--text-muted); }
-.p-divider { width: 32px; height: 1px; background: var(--gold); margin-bottom: 24px; }
-.p-details { list-style: none; margin-bottom: 32px; flex: 1; }
-.p-detail-row { font-size: .86rem; font-weight: 300; color: var(--text-muted); margin-bottom: 12px; display: flex; gap: 10px; line-height: 1.5; }
-.p-book-btn { border: 1px solid rgba(201,168,76,.4); background: transparent; color: var(--gold); padding: 11px 20px; font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; font-family: 'Jost', sans-serif; cursor: pointer; transition: all .3s; text-align: center; text-decoration: none; }
-.p-book-btn:hover { background: var(--gold); color: var(--bg-dark); }
-.pricing-note { max-width: 600px; margin: 48px auto 0; background: var(--bg-off); border-left: 3px solid var(--gold); padding: 16px 24px; font-size: .86rem; color: var(--text-body); font-weight: 300; line-height: 1.6; }
+.pricing-header { text-align: center; margin-bottom: 0; display: flex; flex-direction: column; align-items: center; }
+
+/* Pricing Section Custom Overrides */
+#pricing .section-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+#pricing .section-tag .line {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold) !important;
+}
+#pricing .pricing-header p {
+  max-width: 460px;
+}
+#pricing .btn-gold {
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  padding: 12px 36px;
+  letter-spacing: 0.2em;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+#pricing .btn-gold:hover {
+  background: var(--gold);
+  color: var(--bg-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.2);
+}
 
 /* Testimonials Section */
 #testimonials { background: var(--bg-strip); padding: 120px 0; }

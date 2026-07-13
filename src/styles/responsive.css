@@ -8,12 +8,49 @@
 /* Sticky Mobile CTA Bar */
 .mobile-cta-bar { display: none; }
 
+/* Sticky Mobile CTA Bar */
+.mobile-cta-bar { display: none; }
+
+/* ---- Viewport Height dvh Fixes (Mobile Browser Address Bars) ---- */
+#hero { min-height: 100vh; min-height: 100dvh; }
+.careers-hero { height: 60vh; height: 60dvh; }
+.corp-hero { height: 65vh; height: 65dvh; }
+.job-detail-page, .admin-page, .admin-login, .admin-layout { min-height: 100vh; min-height: 100dvh; }
+
+/* ---- iOS Safari Safe Area Padding & Notch Offsets ---- */
+nav {
+  padding-top: calc(28px + env(safe-area-inset-top, 0px));
+  padding-left: calc(72px + env(safe-area-inset-left, 0px));
+  padding-right: calc(72px + env(safe-area-inset-right, 0px));
+}
+nav.scrolled {
+  padding-top: calc(16px + env(safe-area-inset-top, 0px));
+  padding-left: calc(72px + env(safe-area-inset-left, 0px));
+  padding-right: calc(72px + env(safe-area-inset-right, 0px));
+}
+
+.section-tag .line {
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  nav {
+    padding-top: calc(22px + env(safe-area-inset-top, 0px));
+    padding-left: calc(28px + env(safe-area-inset-left, 0px));
+    padding-right: calc(28px + env(safe-area-inset-right, 0px));
+  }
+  nav.scrolled {
+    padding-top: calc(14px + env(safe-area-inset-top, 0px));
+    padding-left: calc(28px + env(safe-area-inset-left, 0px));
+    padding-right: calc(28px + env(safe-area-inset-right, 0px));
+  }
+}
+
 @media (max-width: 768px) {
-  .max-w { padding: 0 24px; }
-  
   .mobile-cta-bar {
     display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 950;
-    background: var(--bg-dark); border-top: 1px solid rgba(201,168,76,.15); padding: 0;
+    background: var(--bg-dark); border-top: 1px solid rgba(201,168,76,.15);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   
   .mcta-btn {
@@ -27,12 +64,116 @@
   .mcta-corp { color: var(--text-light); background: var(--bg-strip); }
   .mcta-btn svg { flex-shrink: 0; }
   
-  body { padding-bottom: 72px; }
-  
-  #wa-btn { bottom: 96px; }
+  body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+  #wa-btn { bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important; }
 }
 
-/* Touch targets */
-@media (max-width: 768px) {
-  button, a { min-height: 44px; min-width: 44px; }
+/* ---- Unified Spacing & Padding Scale ---- */
+@media (max-width: 1200px) {
+  .hero-inner, .about-grid, .sessions-inner, .how-inner, .gallery-header, .gallery-track, .pricing-inner, .testi-inner, .cta-inner, .corp-grid, .case-grid, .reviews-inner, .lead-inner, .stats-grid, .max-w, .why-grid, .positions-inner, .corp-hero-inner {
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+  }
 }
+
+@media (max-width: 1024px) {
+  .hero-inner, .about-grid, .sessions-inner, .how-inner, .gallery-header, .gallery-track, .pricing-inner, .testi-inner, .cta-inner, .corp-grid, .case-grid, .reviews-inner, .lead-inner, .stats-grid, .max-w, .why-grid, .positions-inner, .corp-hero-inner {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-inner, .about-grid, .sessions-inner, .how-inner, .gallery-header, .gallery-track, .pricing-inner, .testi-inner, .cta-inner, .corp-grid, .case-grid, .reviews-inner, .lead-inner, .stats-grid, .max-w, .why-grid, .positions-inner, .corp-hero-inner {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* ---- Layout Grid & Column Stacking ---- */
+@media (max-width: 1024px) {
+  .sessions-grid, .corp-grid, .case-grid, .reviews-grid, .why-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+  .jobs-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .about-grid, .lead-inner {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .sessions-grid, .corp-grid, .case-grid, .reviews-grid, .why-grid, .jobs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+/* ---- Stat Strip Separator Layout Overrides ---- */
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    padding: 32px 24px !important;
+  }
+  .stat-item::before {
+    display: none !important;
+  }
+  .stat-item {
+    border-bottom: 1px solid rgba(201,168,76,.15) !important;
+  }
+  .stat-item:nth-child(3), .stat-item:nth-child(4) {
+    border-bottom: none !important;
+  }
+  .stat-item:nth-child(odd) {
+    border-right: 1px solid rgba(201,168,76,.15) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .stat-item {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(201,168,76,.15) !important;
+  }
+  .stat-item:last-child {
+    border-bottom: none !important;
+  }
+}
+
+/* ---- Touch Target Size Minimums & Form Usability ---- */
+@media (max-width: 768px) {
+  .btn-gold, .btn-outline, .btn-dark, .btn-wa, .nav-cta, .p-book-btn, .faq-q, .hamburger, .mob-link, .mcta-btn, .card-link, .gallery-view-all, .job-apply-btn, .admin-btn {
+    min-height: 48px !important;
+  }
+  .social-btn {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .hamburger {
+    width: 48px !important;
+    height: 48px !important;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Prevent iOS Auto Zoom on Input Focus */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* ---- Typography Responsive Viewport Scaling ---- */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+  }
+  .careers-hero h1, .corp-hero h1, .job-detail-header h1 {
+    font-size: clamp(1.8rem, 7vw, 2.6rem) !important;
+  }
+}
+

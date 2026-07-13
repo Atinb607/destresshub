@@ -3,6 +3,7 @@
    ============================================================ */
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+img { max-width: 100%; height: auto; }
 
 :root {
   --bg-dark:    #1a1c16;
