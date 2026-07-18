@@ -49,7 +49,7 @@ nav.scrolled {
 @media (max-width: 768px) {
   .mobile-cta-bar {
     display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 950;
-    background: var(--bg-dark); border-top: 1px solid rgba(201,168,76,.15);
+    background: var(--bg-dark); border-top: 1px solid rgba(var(--gold-rgb),.15);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   
@@ -122,13 +122,13 @@ nav.scrolled {
     display: none !important;
   }
   .stat-item {
-    border-bottom: 1px solid rgba(201,168,76,.15) !important;
+    border-bottom: 1px solid rgba(var(--gold-rgb),.15) !important;
   }
   .stat-item:nth-child(3), .stat-item:nth-child(4) {
     border-bottom: none !important;
   }
   .stat-item:nth-child(odd) {
-    border-right: 1px solid rgba(201,168,76,.15) !important;
+    border-right: 1px solid rgba(var(--gold-rgb),.15) !important;
   }
 }
 
@@ -138,7 +138,7 @@ nav.scrolled {
   }
   .stat-item {
     border-right: none !important;
-    border-bottom: 1px solid rgba(201,168,76,.15) !important;
+    border-bottom: 1px solid rgba(var(--gold-rgb),.15) !important;
   }
   .stat-item:last-child {
     border-bottom: none !important;

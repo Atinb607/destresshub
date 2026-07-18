@@ -6,6 +6,35 @@
 img { max-width: 100%; height: auto; }
 
 :root {
+  /* Warm Creme - Deep Teal Theme (Default) */
+  --bg-dark:    #0a2224;
+  --bg-mid:     #102c2f;
+  --bg-strip:   #173b3f;
+  --bg-light:   #fcf4e5;
+  --bg-off:     #f5ebd6;
+  --gold:       #dfbe88;
+  --gold-light: #f3dfbf;
+  --cream:      #fcf4e5;
+  --cream-dark: #e6cca4;
+  --text-light: #fcf4e5;
+  --text-muted: rgba(252,244,229,0.55);
+  --text-dark:  #0a2224;
+  --text-body:  #2f3c3d;
+  --olive:      #275a5e;
+  --ease:       cubic-bezier(0.16,1,0.3,1);
+
+  /* RGB values for transparent uses */
+  --gold-rgb:    223, 190, 136;
+  --olive-rgb:   39, 90, 94;
+  --bg-dark-rgb: 10, 34, 36;
+
+  /* Parallax strip gradients */
+  --strip-bg-1: linear-gradient(45deg, #0a272a, #163d41);
+  --strip-bg-2: linear-gradient(45deg, #2b2218, #3e3224);
+}
+
+/* Original Green-Gold Theme (Revert option: add data-theme="original" or class="theme-original" to body/html) */
+[data-theme="original"], body.theme-original {
   --bg-dark:    #1a1c16;
   --bg-mid:     #222418;
   --bg-strip:   #2e3022;
@@ -20,7 +49,15 @@ img { max-width: 100%; height: auto; }
   --text-dark:  #1a1c16;
   --text-body:  #3d3c34;
   --olive:      #5a5e3a;
-  --ease:       cubic-bezier(0.16,1,0.3,1);
+
+  /* RGB values for transparent uses */
+  --gold-rgb:    201, 168, 76;
+  --olive-rgb:   90, 94, 58;
+  --bg-dark-rgb: 26, 28, 22;
+
+  /* Parallax strip gradients */
+  --strip-bg-1: linear-gradient(45deg, #1a2a22, #2a3a2a);
+  --strip-bg-2: linear-gradient(45deg, #2a221a, #3a2a1a);
 }
 
 html { scroll-behavior: smooth; font-size: 16px; }
@@ -46,7 +83,7 @@ body {
 #cursor-ring {
   position: fixed; top:0; left:0;
   width: 36px; height: 36px;
-  border: 1px solid rgba(201,168,76,.5);
+  border: 1px solid rgba(var(--gold-rgb),.5);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;

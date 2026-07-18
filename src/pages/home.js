@@ -14,6 +14,7 @@ import rootsLogo from './roots-analysis-logo.png'
 import icueriousLogo from './icuerious-logo.jpg'
 import edChdLogo from './ed-chd-logo.jpg'
 import rajivGandhiLogo from './Rajiv_Gandhi_National_Institute_of_Youth_Development_Logo.png'
+import iotaLogo from './iota.jpg'
 
 export async function homePage() {
   const html = `
@@ -24,7 +25,7 @@ export async function homePage() {
       <div class="hero-bg" id="hero-bg"></div>
       <div class="hero-image-col reveal right">
         <div class="hero-photo">
-          <img src="/hero-right.jpeg" alt="Laughter wellness session">
+          <img src="/hero new.jpeg" alt="Laughter wellness session">
         </div>
       </div>
       <div class="hero-inner">
@@ -145,6 +146,7 @@ export async function homePage() {
           <div class="logo-item"><img src="${icueriousLogo}" alt="ICuerious"></div>
           <div class="logo-item"><img src="${edChdLogo}" alt="Education Chandigarh"></div>
           <div class="logo-item"><img src="${rajivGandhiLogo}" alt="Rajiv Gandhi National Institute"></div>
+          <div class="logo-item"><img src="${iotaLogo}" alt="Iota"></div>
         </div>
       </div>
     </section>
@@ -394,6 +396,10 @@ export async function homePage() {
         <div class="g-frame gf-6">
           <img src="/image%20copy.png" alt="Online Session" class="g-photo">
           <div class="g-overlay"><div class="g-label">Online Session</div></div>
+        </div>
+        <div class="g-frame gf-7">
+          <img src="/behav%20training.jpg" alt="Behavioral Training" class="g-photo">
+          <div class="g-overlay"><div class="g-label">Behavioral Training</div></div>
         </div>
       </div>
     </section>

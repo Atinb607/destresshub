@@ -10,10 +10,10 @@ nav {
 }
 
 nav.scrolled {
-  background: rgba(26,28,22,.88);
+  background: rgba(var(--bg-dark-rgb),.88);
   backdrop-filter: blur(12px);
   padding: 16px 72px;
-  border-bottom: 1px solid rgba(201,168,76,.12);
+  border-bottom: 1px solid rgba(var(--gold-rgb),.12);
 }
 
 .nav-logo {

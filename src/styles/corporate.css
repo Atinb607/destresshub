@@ -5,8 +5,8 @@
 .corp-hero { height: 65vh; min-height: 480px; background: var(--bg-dark); position: relative; overflow: hidden; display: flex; align-items: center; }
 .corp-hero-bg {
   position: absolute; inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(90,94,58,.15) 0%, transparent 50%),
-              radial-gradient(circle at 30% 70%, rgba(201,168,76,.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 70% 30%, rgba(var(--olive-rgb),.15) 0%, transparent 50%),
+              radial-gradient(circle at 30% 70%, rgba(var(--gold-rgb),.1) 0%, transparent 50%);
 }
 .corp-hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: auto; padding: 0 72px; width: 100%; }
 .corp-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 300; color: var(--text-light); margin-bottom: 24px; }

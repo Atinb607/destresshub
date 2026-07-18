@@ -6,8 +6,8 @@
 #hero { min-height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; }
 .hero-bg {
   position: absolute; inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(90,94,58,.15) 0%, transparent 50%),
-              radial-gradient(circle at 30% 70%, rgba(201,168,76,.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 70% 30%, rgba(var(--olive-rgb),.15) 0%, transparent 50%),
+              radial-gradient(circle at 30% 70%, rgba(var(--gold-rgb),.1) 0%, transparent 50%);
   background-color: var(--bg-dark);
 }
 .hero-bg::after {
@@ -67,7 +67,7 @@
 .session-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .4s ease; }
 .session-card:hover { transform: translateY(-6px); }
 .session-card:hover::before { transform: scaleX(1); }
-.card-number { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: rgba(201,168,76,.15); line-height: 1; position: absolute; top: 32px; right: 40px; }
+.card-number { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: rgba(var(--gold-rgb),.15); line-height: 1; position: absolute; top: 32px; right: 40px; }
 .card-icon { font-size: 2.4rem; margin-bottom: 48px; }
 .card-cat { font-size: .65rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
 .session-card h3 { color: var(--text-light); margin-bottom: 16px; font-size: 1.4rem; }
@@ -79,12 +79,12 @@
 /* Parallax Strips */
 .parallax-strip { height: 560px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; }
 .strip-bg { position: absolute; inset: -100px 0; z-index: 1; }
-.strip-overlay { position: absolute; inset: 0; z-index: 2; background: rgba(26,28,22,.65); backdrop-filter: blur(2px); }
+.strip-overlay { position: absolute; inset: 0; z-index: 2; background: rgba(var(--bg-dark-rgb),.65); backdrop-filter: blur(2px); }
 .strip-content { position: relative; z-index: 3; max-width: 800px; padding: 0 40px; }
 .strip-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 300; line-height: 1.25; color: var(--text-light); margin-bottom: 24px; font-style: italic; }
 .strip-attr { font-size: .8rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
-.strip-1 .strip-bg { background: linear-gradient(45deg, #1a2a22, #2a3a2a); }
-.strip-2 .strip-bg { background: linear-gradient(45deg, #2a221a, #3a2a1a); }
+.strip-1 .strip-bg { background: var(--strip-bg-1); }
+.strip-2 .strip-bg { background: var(--strip-bg-2); }
 
 /* How It Works Section */
 #how { background: var(--bg-mid); padding: 120px 0; }
@@ -92,7 +92,7 @@
 .how-header { text-align: center; margin-bottom: 80px; display: flex; flex-direction: column; align-items: center; }
 .how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
 .how-step { text-align: center; position: relative; }
-.how-step:not(:last-child)::after { content: '→'; position: absolute; right: -20px; top: 24px; color: rgba(201,168,76,.3); transform: translateX(50%); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; }
+.how-step:not(:last-child)::after { content: '→'; position: absolute; right: -20px; top: 24px; color: rgba(var(--gold-rgb),.3); transform: translateX(50%); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; }
 .step-n { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 16px; }
 .step-icon { font-size: 2rem; margin-bottom: 16px; }
 .step-title { font-size: 1.05rem; font-weight: 500; color: var(--text-light); margin-bottom: 12px; }
@@ -112,9 +112,10 @@
 .gf-4 { width: 260px; height: 360px; }
 .gf-5 { width: 340px; height: 440px; }
 .gf-6 { width: 280px; height: 380px; }
+.gf-7 { width: 320px; height: 440px; }
 .g-frame:nth-child(even) { margin-top: 40px; }
 .g-photo { width: 100%; height: 100%; object-fit: cover; }
-.g-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,28,22,.8) 0%, transparent 60%); opacity: 0; transition: opacity .4s ease; display: flex; align-items: flex-end; padding: 24px; }
+.g-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(var(--bg-dark-rgb),.8) 0%, transparent 60%); opacity: 0; transition: opacity .4s ease; display: flex; align-items: flex-end; padding: 24px; }
 .g-label { font-size: .8rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); transform: translateY(10px); transition: transform .4s ease; }
 .g-frame:hover .g-overlay { opacity: 1; }
 .g-frame:hover .g-label { transform: translateY(0); }
@@ -161,7 +162,7 @@
 .testi-header { text-align: center; margin-bottom: 64px; display: flex; flex-direction: column; align-items: center; }
 .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .testi-card { background: rgba(255,255,255,.03); border: 1px solid rgba(245,240,232,.05); padding: 40px 32px; display: flex; flex-direction: column; transition: transform .4s ease; }
-.testi-card:hover { transform: translateY(-5px); border-color: rgba(201,168,76,.3); }
+.testi-card:hover { transform: translateY(-5px); border-color: rgba(var(--gold-rgb),.3); }
 .testi-stars { color: var(--gold); font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 24px; }
 .testi-text { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--text-light); line-height: 1.6; margin-bottom: 32px; flex: 1; }
 .testi-author { display: flex; align-items: center; gap: 16px; border-top: 1px solid rgba(245,240,232,.05); padding-top: 24px; }
@@ -187,7 +188,7 @@
 .corp-wellness-section { background: var(--bg-dark); padding: 120px 0; }
 .corp-grid { max-width: 1200px; margin: auto; padding: 0 72px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; }
 .corp-card { background: var(--bg-mid); padding: 48px 36px; display: flex; flex-direction: column; gap: 16px; border: 1px solid rgba(245,240,232,.05); transition: border-color .3s, background .3s; }
-.corp-card:hover { border-color: rgba(201,168,76,.2); background: rgba(255,255,255,.04); }
+.corp-card:hover { border-color: rgba(var(--gold-rgb),.2); background: rgba(255,255,255,.04); }
 .corp-icon { font-size: 2.4rem; }
 .corp-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--text-light); }
 .corp-card p { font-size: .86rem; font-weight: 300; line-height: 1.75; color: var(--text-muted); }
@@ -199,7 +200,7 @@
 .case-card:hover { transform: translateY(-6px); }
 .case-card-header { background: var(--bg-dark); padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; }
 .case-org { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--text-light); }
-.case-type { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 500; color: var(--gold); background: rgba(201,168,76,.12); padding: 4px 12px; border-radius: 1px; }
+.case-type { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 500; color: var(--gold); background: rgba(var(--gold-rgb),.12); padding: 4px 12px; border-radius: 1px; }
 .case-card-body { padding: 32px; }
 .case-label { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; color: var(--olive); margin-bottom: 6px; }
 .case-text { font-size: .88rem; font-weight: 300; line-height: 1.7; color: var(--text-body); margin-bottom: 20px; }
@@ -215,7 +216,7 @@
 .reviews-count { font-size: .85rem; font-weight: 300; color: var(--text-muted); }
 .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .review-card { background: rgba(255,255,255,.04); padding: 36px 32px; border: 1px solid rgba(245,240,232,.06); border-radius: 2px; display: flex; flex-direction: column; gap: 16px; transition: border-color .3s; }
-.review-card:hover { border-color: rgba(201,168,76,.2); }
+.review-card:hover { border-color: rgba(var(--gold-rgb),.2); }
 .review-stars { color: var(--gold); letter-spacing: 2px; font-size: .85rem; }
 .review-text { font-size: .92rem; font-weight: 300; line-height: 1.75; color: var(--text-light); flex: 1; }
 .review-author { font-size: .82rem; font-weight: 500; color: var(--text-muted); padding-top: 12px; border-top: 1px solid rgba(245,240,232,.07); }

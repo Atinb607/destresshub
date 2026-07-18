@@ -6,7 +6,7 @@
 
 const SITE_URL = 'https://www.destresshub.com'
 const SITE_NAME = 'DeStress Hub'
-const DEFAULT_IMAGE = 'https://www.destresshub.com/logo.png'
+const DEFAULT_IMAGE = 'https://www.destresshub.com/logo%20new.png'
 const GA_MEASUREMENT_ID = 'G-1D783SSKW5'
 
 /**
@@ -120,7 +120,7 @@ export function injectStructuredData() {
       addressCountry: 'IN'
     },
     sameAs: [
-      'https://www.linkedin.com/in/d-stress-hub-679805396/',
+      'https://www.linkedin.com/company/destresshub',
       'https://www.youtube.com/@D-StressHub',
       'https://www.instagram.com/dstresshub/'
     ]

@@ -16,7 +16,7 @@
   background: var(--gold); color: var(--bg-dark); padding: 16px 36px; border-radius: 2px;
   text-transform: uppercase; font-size: .8rem; letter-spacing: .15em; font-weight: 500;
 }
-.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,.2); }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(var(--gold-rgb),.2); }
 
 .btn-outline {
   background: transparent; color: var(--text-light); border: 1px solid rgba(245,240,232,.3);
@@ -47,10 +47,10 @@
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* Stats Strip */
-.stats-strip { background: var(--bg-dark); padding: 0; border-top: 1px solid rgba(201,168,76,.15); border-bottom: 1px solid rgba(201,168,76,.15); }
+.stats-strip { background: var(--bg-dark); padding: 0; border-top: 1px solid rgba(var(--gold-rgb),.15); border-bottom: 1px solid rgba(var(--gold-rgb),.15); }
 .stats-grid { max-width: 1200px; margin: auto; padding: 48px 72px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
 .stat-item { text-align: center; padding: 20px; position: relative; }
-.stat-item + .stat-item::before { content: ''; position: absolute; left: 0; top: 20%; height: 60%; width: 1px; background: rgba(201,168,76,.2); }
+.stat-item + .stat-item::before { content: ''; position: absolute; left: 0; top: 20%; height: 60%; width: 1px; background: rgba(var(--gold-rgb),.2); }
 .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1; }
 .stat-label { font-size: .72rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--text-muted); margin-top: 8px; }
 
@@ -76,7 +76,7 @@
 /* FAQ Accordion */
 .faq-list { display: flex; flex-direction: column; gap: 2px; }
 .faq-item { background: rgba(255,255,255,.03); border: 1px solid rgba(245,240,232,.05); overflow: hidden; transition: border-color .3s; }
-.faq-item.open { border-color: rgba(201,168,76,.2); }
+.faq-item.open { border-color: rgba(var(--gold-rgb),.2); }
 .faq-q {
   display: flex; justify-content: space-between; align-items: center; padding: 24px 32px; cursor: pointer;
   font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--text-light); transition: color .3s;
@@ -123,7 +123,7 @@ footer {
   font-size: .9rem; text-decoration: none; color: var(--text-light);
   transition: border-color .25s, background .25s;
 }
-.social-btn:hover { border-color: var(--gold); background: rgba(201,168,76,.08); color: var(--gold); }
+.social-btn:hover { border-color: var(--gold); background: rgba(var(--gold-rgb),.08); color: var(--gold); }
 
 .footer-col h4 {
   font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 500;

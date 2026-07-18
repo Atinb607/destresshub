@@ -6,7 +6,7 @@
 export function renderNavbar() {
   return `
     <nav id="navbar">
-      <a href="/" data-link class="nav-logo"><img src="/logo.png" alt="DeStressHub" class="brand-logo-img"></a>
+      <a href="/" data-link class="nav-logo"><img src="/logo new.png" alt="DeStressHub" class="brand-logo-img"></a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#sessions">Sessions</a></li>
