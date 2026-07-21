@@ -50,6 +50,7 @@ export async function homePage() {
       </div>
     </section>
 
+
     <!-- Trust Stats -->
     <div class="stats-strip">
       <div class="stats-grid">
@@ -147,6 +148,50 @@ export async function homePage() {
           <div class="logo-item"><img src="${edChdLogo}" alt="Education Chandigarh"></div>
           <div class="logo-item"><img src="${rajivGandhiLogo}" alt="Rajiv Gandhi National Institute"></div>
           <div class="logo-item"><img src="${iotaLogo}" alt="Iota"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us? -->
+    <section class="why-hr-section">
+      <div class="why-hr-inner reveal up">
+        ${sectionHeader({ tag: 'For HR Leaders', title: 'Why Choose<br/><em>Us?</em>', theme: 'light' })}
+        <div class="why-hr-list">
+          <div class="why-hr-item reveal up d1">
+            <div class="feat-num">01</div>
+            <div>
+              <div class="feat-title">Certified expertise, not freelance fun.</div>
+              <div class="feat-desc">Sessions are led by Certified Experts, with corporate delivery experience across sectors.</div>
+            </div>
+          </div>
+          <div class="why-hr-item reveal up d2">
+            <div class="feat-num">02</div>
+            <div>
+              <div class="feat-title">Trusted by known organisations.</div>
+              <div class="feat-desc">Like Tata Group, Tanishq, Icuerious, Roots Analysis, iOTA, RGNIYD under the Ministry of Youth Affairs and Sports and many more.</div>
+            </div>
+          </div>
+          <div class="why-hr-item reveal up d3">
+            <div class="feat-num">03</div>
+            <div>
+              <div class="feat-title">Built for HR outcomes, not entertainment.</div>
+              <div class="feat-desc">Programs mapped to burnout prevention, team cohesion, and emotional intelligence, not generic games.</div>
+            </div>
+          </div>
+          <div class="why-hr-item reveal up d4">
+            <div class="feat-num">04</div>
+            <div>
+              <div class="feat-title">Flexible delivery.</div>
+              <div class="feat-desc">In office, virtual, or large scale corporate events, across Tricity and pan India.</div>
+            </div>
+          </div>
+          <div class="why-hr-item reveal up d5">
+            <div class="feat-num">05</div>
+            <div>
+              <div class="feat-title">Easy to slot into HR calendars.</div>
+              <div class="feat-desc">Standard formats (30/60/90 minute sessions), quick scheduling, minimal internal coordination needed.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

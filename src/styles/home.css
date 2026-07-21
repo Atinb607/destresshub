@@ -4,6 +4,44 @@
 
 /* Hero Section */
 #hero { min-height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; }
+
+/* Why Should HR Book Us Section */
+.why-hr-section {
+  background: #FFFFFF;
+  padding: 100px 0;
+  border-top: 1px solid rgba(0, 0, 0, .05);
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+.why-hr-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 72px;
+}
+.why-hr-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 48px;
+}
+.why-hr-item {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 20px 24px;
+  background: rgba(0, 0, 0, .02);
+  border: 1px solid rgba(0, 0, 0, .05);
+  border-radius: 2px;
+  transition: border-color .3s;
+}
+.why-hr-item:hover {
+  border-color: rgba(var(--gold-rgb), .5);
+}
+.why-hr-section .feat-title {
+  color: var(--text-dark);
+}
+.why-hr-section .feat-desc {
+  color: var(--text-body);
+}
 .hero-bg {
   position: absolute; inset: 0;
   background: radial-gradient(circle at 70% 30%, rgba(var(--olive-rgb),.15) 0%, transparent 50%),
@@ -263,7 +301,7 @@
   .hero-image-col { display: none; }
   #hero h1 { font-size: 3rem; }
   .scroll-hint { display: none; }
-  #about, #sessions, #how, #gallery, #pricing, #testimonials, #cta, .corp-wellness-section, .case-section, .reviews-section, .lead-section { padding: 80px 0; }
+  #about, #sessions, #how, #gallery, #pricing, #testimonials, #cta, .corp-wellness-section, .case-section, .reviews-section, .lead-section, .why-hr-section { padding: 80px 0; }
 }
 
 @media (max-width: 600px) {

@@ -70,21 +70,21 @@ nav.scrolled {
 
 /* ---- Unified Spacing & Padding Scale ---- */
 @media (max-width: 1200px) {
-  .hero-inner, .about-grid, .sessions-inner, .how-inner, .gallery-header, .gallery-track, .pricing-inner, .testi-inner, .cta-inner, .corp-grid, .case-grid, .reviews-inner, .lead-inner, .stats-grid, .max-w, .why-grid, .positions-inner, .corp-hero-inner {
+  .hero-inner, .about-grid, .sessions-inner, .how-inner, .gallery-header, .gallery-track, .pricing-inner, .testi-inner, .cta-inner, .corp-grid, .case-grid, .reviews-inner, .lead-inner, .stats-grid, .max-w, .why-grid, .positions-inner, .corp-hero-inner, .why-hr-inner, .gallery-section, .gallery-hero-inner {
     padding-left: 48px !important;
     padding-right: 48px !important;
   }
 }
 
 @media (max-width: 1024px) {
-  .hero-inner, .about-grid, .sessions-inner, .how-inner, .gallery-header, .gallery-track, .pricing-inner, .testi-inner, .cta-inner, .corp-grid, .case-grid, .reviews-inner, .lead-inner, .stats-grid, .max-w, .why-grid, .positions-inner, .corp-hero-inner {
+  .hero-inner, .about-grid, .sessions-inner, .how-inner, .gallery-header, .gallery-track, .pricing-inner, .testi-inner, .cta-inner, .corp-grid, .case-grid, .reviews-inner, .lead-inner, .stats-grid, .max-w, .why-grid, .positions-inner, .corp-hero-inner, .why-hr-inner, .gallery-section, .gallery-hero-inner {
     padding-left: 24px !important;
     padding-right: 24px !important;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-inner, .about-grid, .sessions-inner, .how-inner, .gallery-header, .gallery-track, .pricing-inner, .testi-inner, .cta-inner, .corp-grid, .case-grid, .reviews-inner, .lead-inner, .stats-grid, .max-w, .why-grid, .positions-inner, .corp-hero-inner {
+  .hero-inner, .about-grid, .sessions-inner, .how-inner, .gallery-header, .gallery-track, .pricing-inner, .testi-inner, .cta-inner, .corp-grid, .case-grid, .reviews-inner, .lead-inner, .stats-grid, .max-w, .why-grid, .positions-inner, .corp-hero-inner, .why-hr-inner, .gallery-section, .gallery-hero-inner {
     padding-left: 16px !important;
     padding-right: 16px !important;
   }

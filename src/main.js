@@ -11,6 +11,7 @@ import './styles/home.css'
 import './styles/careers.css'
 import './styles/corporate.css'
 import './styles/admin.css'
+import './styles/gallery.css'
 import './styles/responsive.css'
 
 /* ---- Router ---- */
@@ -37,6 +38,7 @@ import { adminLoginPage } from './pages/admin/login.js'
 import { adminDashboardPage } from './pages/admin/dashboard.js'
 import { adminJobFormPage } from './pages/admin/job-form.js'
 import { notFoundPage } from './pages/not-found.js'
+import { galleryPage } from './pages/gallery.js'
 import { inject } from '@vercel/analytics'
 
 /* ============================================================
@@ -48,6 +50,7 @@ route('/corporate', async () => corporatePage())
 route('/careers', async () => careersPage())
 route('/careers/job/:slug', async (params) => jobDetailPage(params))
 route('/case-studies', async () => caseStudiesPage())
+route('/gallery', async () => galleryPage())
 route('/resources', async () => resourcesPage())
 route('/admin', async () => adminLoginPage())
 route('/admin/jobs', async () => adminDashboardPage())

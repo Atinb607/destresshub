@@ -12,6 +12,7 @@ export function renderNavbar() {
         <li><a href="#sessions">Sessions</a></li>
         <li><a href="#how">How It Works</a></li>
         <li><a href="#pricing">Pricing</a></li>
+        <li><a href="/gallery" data-link>Gallery</a></li>
         <li><a href="/corporate" data-link>Corporate</a></li>
         <li><a href="/careers" data-link>Careers</a></li>
         <li><a href="https://wa.me/9464663405?text=Hi!%20I%27d%20like%20to%20book%20a%20session." target="_blank" class="nav-cta">Book Now</a></li>
@@ -26,6 +27,7 @@ export function renderNavbar() {
       <a href="#sessions" class="mob-link">Sessions</a>
       <a href="#how" class="mob-link">How It Works</a>
       <a href="#pricing" class="mob-link">Pricing</a>
+      <a href="/gallery" data-link class="mob-link">Gallery</a>
       <a href="/corporate" data-link class="mob-link">Corporate</a>
       <a href="/careers" data-link class="mob-link">Careers</a>
       <a href="https://wa.me/9464663405" target="_blank" style="color:var(--gold)">Book Now →</a>
