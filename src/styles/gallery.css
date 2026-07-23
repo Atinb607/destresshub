@@ -81,6 +81,37 @@
   opacity: 1;
 }
 
+/* Skeleton loading placeholder */
+.photo-skeleton {
+  cursor: default;
+}
+.skeleton-shimmer {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--bg-mid) 25%,
+    rgba(245, 240, 232, .06) 50%,
+    var(--bg-mid) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Fallback message when photos can't load */
+.gallery-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: .9rem;
+  padding: 60px 20px;
+  font-style: italic;
+}
+
 /* Video testimonial grid */
 .video-grid {
   display: grid;

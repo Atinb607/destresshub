@@ -14,6 +14,8 @@ import 'glightbox/dist/css/glightbox.min.css'
 
 /* ---- Cloudinary URL builders ---- */
 const CLOUD = 'oyzd4zsd'
+
+// Video builders (unchanged — manual config, w_720 cap)
 function videoThumbUrl(publicId) {
   return `https://res.cloudinary.com/${CLOUD}/video/upload/so_0,w_640,h_360,c_fill,q_auto,f_jpg/${publicId}`
 }
@@ -21,54 +23,31 @@ function videoPlayUrl(publicId) {
   return `https://res.cloudinary.com/${CLOUD}/video/upload/q_auto,f_auto/${publicId}.mp4`
 }
 
-/* ---- Local photo lists ---- */
-const sessionPhotos = [
-  { src: '/Gallery/Photos/IMG_2865.jpg', alt: 'Session photo' },
-  { src: '/Gallery/Photos/IMG_2878.jpg', alt: 'Session photo' },
-  { src: '/Gallery/Photos/IMG_3191.jpg', alt: 'Session photo' },
-  { src: '/Gallery/Photos/IMG_3378.jpg', alt: 'Session photo' },
-  { src: '/Gallery/Photos/IMG_3388.jpg', alt: 'Session photo' },
-  { src: '/Gallery/Photos/IMG_7480.jpg', alt: 'Session photo' },
-  { src: '/Gallery/Photos/RON00726.jpg', alt: 'Session photo' },
-  { src: '/Gallery/Photos/RON00732.jpg', alt: 'Session photo' },
-]
-
-const momentPhotos = [
-  { src: '/Gallery/Moments/IMG-20260418-WA0327.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG-20260418-WA0342.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG-20260418-WA0504.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG-20260418-WA0554(1).jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG-20260418-WA0555.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG-20260418-WA0568(1).jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG_2733.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG_3358.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG_3366.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG_3369.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG_6069.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG_7440.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG_7452.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG_7865.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG_7961.JPG.jpeg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG_7989.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/IMG_E8052.JPG', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/pic 1.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/pic 2.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/pic 3.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/pic 4.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/pic 5.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/pic 6.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/pic 7.jpg', alt: 'Moment of laughter' },
-  { src: '/Gallery/Moments/pic 8.jpg', alt: 'Moment of laughter' },
-]
+// Photo builders — capped transformations to control credit usage
+function photoThumbUrl(publicId) {
+  return `https://res.cloudinary.com/${CLOUD}/image/upload/w_400,h_400,c_fill,q_auto,f_auto/${publicId}`
+}
+function photoFullUrl(publicId) {
+  return `https://res.cloudinary.com/${CLOUD}/image/upload/w_1600,q_auto,f_auto/${publicId}`
+}
 
 /* ---- Play icon SVG ---- */
 const playSvg = `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`
 
-/* ---- Build HTML ---- */
-function renderPhotoGrid(photos, glightboxClass) {
+/* ---- Skeleton placeholder for loading state ---- */
+function renderPhotoSkeleton(count, glightboxClass) {
+  return Array.from({ length: count }, () => `
+    <div class="photo-grid-item photo-skeleton" data-gallery="${glightboxClass}">
+      <div class="skeleton-shimmer"></div>
+    </div>
+  `).join('')
+}
+
+/* ---- Build photo grid from Cloudinary data ---- */
+function renderPhotoGrid(photos, glightboxClass, altText) {
   return photos.map(p => `
-    <a href="${p.src}" class="photo-grid-item glightbox-${glightboxClass}" data-gallery="${glightboxClass}">
-      <img src="${p.src}" alt="${p.alt}" loading="lazy"
+    <a href="${photoFullUrl(p.public_id)}" class="photo-grid-item glightbox-${glightboxClass}" data-gallery="${glightboxClass}">
+      <img src="${photoThumbUrl(p.public_id)}" alt="${altText}" loading="lazy"
            sizes="(max-width: 480px) 50vw, (max-width: 768px) 33vw, 280px">
     </a>
   `).join('')
@@ -128,8 +107,8 @@ export function galleryPage() {
           <div class="line"></div>
           <h3>Session Photos</h3>
         </div>
-        <div class="photo-grid reveal up">
-          ${renderPhotoGrid(sessionPhotos, 'sessions')}
+        <div class="photo-grid reveal up" id="photos-grid">
+          ${renderPhotoSkeleton(8, 'sessions')}
         </div>
       </section>
 
@@ -139,8 +118,8 @@ export function galleryPage() {
           <div class="line"></div>
           <h3>Moments of Laughter</h3>
         </div>
-        <div class="photo-grid reveal up">
-          ${renderPhotoGrid(momentPhotos, 'moments')}
+        <div class="photo-grid reveal up" id="moments-grid">
+          ${renderPhotoSkeleton(12, 'moments')}
         </div>
       </section>
 
@@ -174,28 +153,72 @@ export function galleryPage() {
     initRevealAnimations()
     refreshCursorHovers()
 
-    // Initialize GLightbox for session photos
-    const photoLightbox1 = GLightbox({
-      selector: '.glightbox-sessions',
-      touchNavigation: true,
-      loop: true,
-      zoomable: true,
-      draggable: true,
-      openEffect: 'fade',
-      closeEffect: 'fade',
-    })
+    // ── Photo lightbox instances (will be initialized after photos load) ──
+    let photoLightbox1 = null
+    let photoLightbox2 = null
 
-    // Initialize GLightbox for moment photos
-    const photoLightbox2 = GLightbox({
-      selector: '.glightbox-moments',
-      touchNavigation: true,
-      loop: true,
-      zoomable: true,
-      draggable: true,
-      openEffect: 'fade',
-      closeEffect: 'fade',
-    })
+    /**
+     * Fetch photos from the serverless API and populate both grids.
+     * On failure, the skeleton placeholders are replaced with a brief message.
+     */
+    async function loadPhotos() {
+      try {
+        const resp = await fetch('/api/gallery-photos')
+        if (!resp.ok) throw new Error(`API returned ${resp.status}`)
+        const data = await resp.json()
 
+        // Populate Session Photos grid
+        const photosGrid = document.getElementById('photos-grid')
+        if (photosGrid && data.photos && data.photos.length > 0) {
+          photosGrid.innerHTML = renderPhotoGrid(data.photos, 'sessions', 'Session photo')
+        } else if (photosGrid) {
+          photosGrid.innerHTML = '<p class="gallery-empty">Session photos are currently unavailable.</p>'
+        }
+
+        // Populate Moments grid
+        const momentsGrid = document.getElementById('moments-grid')
+        if (momentsGrid && data.moments && data.moments.length > 0) {
+          momentsGrid.innerHTML = renderPhotoGrid(data.moments, 'moments', 'Moment of laughter')
+        } else if (momentsGrid) {
+          momentsGrid.innerHTML = '<p class="gallery-empty">Moment photos are currently unavailable.</p>'
+        }
+      } catch (err) {
+        console.warn('Gallery photo load failed, showing fallback:', err.message)
+        const photosGrid = document.getElementById('photos-grid')
+        const momentsGrid = document.getElementById('moments-grid')
+        if (photosGrid) photosGrid.innerHTML = '<p class="gallery-empty">Photos could not be loaded. Please try again later.</p>'
+        if (momentsGrid) momentsGrid.innerHTML = '<p class="gallery-empty">Photos could not be loaded. Please try again later.</p>'
+      }
+
+      // Initialize (or re-initialize) GLightbox for the freshly inserted photos
+      if (photoLightbox1) { try { photoLightbox1.destroy() } catch (_) { /* noop */ } }
+      if (photoLightbox2) { try { photoLightbox2.destroy() } catch (_) { /* noop */ } }
+
+      photoLightbox1 = GLightbox({
+        selector: '.glightbox-sessions',
+        touchNavigation: true,
+        loop: true,
+        zoomable: true,
+        draggable: true,
+        openEffect: 'fade',
+        closeEffect: 'fade',
+      })
+
+      photoLightbox2 = GLightbox({
+        selector: '.glightbox-moments',
+        touchNavigation: true,
+        loop: true,
+        zoomable: true,
+        draggable: true,
+        openEffect: 'fade',
+        closeEffect: 'fade',
+      })
+    }
+
+    // Fire the async photo load
+    loadPhotos()
+
+    // ── Video lightbox (unchanged) ──
     // Initialize GLightbox for video testimonials
     // Build elements array manually from the video cards
     const videoElements = []

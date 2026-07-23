@@ -12,6 +12,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.49.0",
     "@vercel/analytics": "^2.0.1",
+    "cloudinary": "^2.10.0",
     "glightbox": "^3.3.1",
     "jsdom": "^29.1.1",
     "playwright": "^1.61.1"
