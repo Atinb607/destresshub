@@ -15,6 +15,7 @@ import icueriousLogo from './icuerious-logo.jpg'
 import edChdLogo from './ed-chd-logo.jpg'
 import rajivGandhiLogo from './Rajiv_Gandhi_National_Institute_of_Youth_Development_Logo.png'
 import iotaLogo from './iota.jpg'
+import nexusSelectTrustLogo from './nexusselecttrust-logo.png'
 
 export async function homePage() {
   const html = `
@@ -148,6 +149,7 @@ export async function homePage() {
           <div class="logo-item"><img src="${edChdLogo}" alt="Education Chandigarh"></div>
           <div class="logo-item"><img src="${rajivGandhiLogo}" alt="Rajiv Gandhi National Institute"></div>
           <div class="logo-item"><img src="${iotaLogo}" alt="Iota"></div>
+          <div class="logo-item"><img src="${nexusSelectTrustLogo}" alt="Nexus Select Trust"></div>
         </div>
       </div>
     </section>
