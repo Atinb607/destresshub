@@ -13,6 +13,7 @@ import './styles/corporate.css'
 import './styles/coordinator.css'
 import './styles/admin.css'
 import './styles/gallery.css'
+import './styles/digital-card.css'
 import './styles/responsive.css'
 
 /* ---- Router ---- */
@@ -24,6 +25,7 @@ import { initCursor } from './components/cursor.js'
 /* ---- Floating Elements ---- */
 import { renderWAButton, initWAButton } from './components/wa-button.js'
 import { renderMobileCTA } from './components/mobile-cta.js'
+import { renderDigitalCard, initDigitalCard } from './components/digital-card.js'
 
 /* ---- SEO & Structured Data ---- */
 import { injectStructuredData } from './utils/seo.js'
@@ -50,6 +52,7 @@ import { inject } from '@vercel/analytics'
 route('/', async () => homePage())
 route('/corporate', async () => corporatePage())
 route('/rajat-avasthi', async () => rajatAvasthiPage())
+route('/about-founder', async () => rajatAvasthiPage())
 route('/wellness-coordinator', async () => rajatAvasthiPage())
 route('/careers', async () => careersPage())
 route('/careers/job/:slug', async (params) => jobDetailPage(params))
@@ -78,6 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const mctaContainer = document.createElement('div')
   mctaContainer.innerHTML = renderMobileCTA()
   document.body.appendChild(mctaContainer.firstElementChild)
+
+  // Digital Card component (Floating Action Button & Modal)
+  const dcFragment = document.createRange().createContextualFragment(renderDigitalCard())
+  document.body.appendChild(dcFragment)
+  initDigitalCard()
 
   // Custom cursor
   initCursor()

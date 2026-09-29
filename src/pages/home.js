@@ -135,7 +135,7 @@ export async function homePage() {
             </div>
           </div>
           <div style="margin-top:36px;">
-            <a href="/rajat-avasthi" data-link class="btn-outline">Meet Our Wellness Coordinator →</a>
+            <a href="/rajat-avasthi" data-link class="btn-outline">About Founder →</a>
           </div>
         </div>
       </div>

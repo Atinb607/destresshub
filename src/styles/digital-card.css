@@ -1,0 +1,594 @@
+/* ============================================================
+   DIGITAL BUSINESS CARD - FAB, MODAL, QR CODE, & EXPORT
+   ============================================================ */
+
+/* ---- Floating Action Button (FAB) ---- */
+.digital-card-fab {
+  position: fixed;
+  bottom: 100px;
+  right: 32px;
+  z-index: 960;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #102c2f 0%, #0a2224 100%);
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 16px rgba(var(--gold-rgb), 0.2);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              opacity 0.45s,
+              box-shadow 0.3s,
+              border-color 0.3s,
+              color 0.3s;
+  padding: 0;
+  outline: none;
+}
+
+.digital-card-fab.dc-fab-visible {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.digital-card-fab:hover {
+  transform: scale(1.08) translateY(-2px);
+  border-color: var(--gold-light);
+  color: var(--gold-light);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 0 24px rgba(var(--gold-rgb), 0.4);
+}
+
+.digital-card-fab:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+/* FAB Pulse Beacon Ring */
+.dc-fab-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  opacity: 0;
+  animation: dcRingPulse 3.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  pointer-events: none;
+}
+
+@keyframes dcRingPulse {
+  0% { transform: scale(0.92); opacity: 0.75; }
+  65% { transform: scale(1.38); opacity: 0; }
+  100% { transform: scale(1.38); opacity: 0; }
+}
+
+/* FAB Tooltip */
+.dc-fab-tooltip {
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: rgba(16, 44, 47, 0.96);
+  color: var(--gold-light);
+  border: 1px solid rgba(var(--gold-rgb), 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.digital-card-fab:hover .dc-fab-tooltip,
+.digital-card-fab:focus-visible .dc-fab-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* ---- Backdrop ---- */
+.dc-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 17, 18, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 9990;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s var(--ease), visibility 0.35s;
+}
+
+.dc-backdrop.dc-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Prevent body scrolling while modal is open */
+body.dc-modal-open {
+  overflow: hidden !important;
+}
+
+/* ---- Modal Dialog ---- */
+.dc-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 440px;
+  max-width: calc(100vw - 32px);
+  max-height: 92vh;
+  max-height: 92dvh;
+  background: var(--bg-dark);
+  border: 1px solid rgba(var(--gold-rgb), 0.35);
+  border-radius: 50%;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), 0 0 50px rgba(var(--gold-rgb), 0.12);
+  z-index: 9992;
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(calc(-50% + var(--dc-dx, 360px)), calc(-50% + var(--dc-dy, 280px))) scale(var(--dc-scale, 0.08));
+  transition: transform 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s ease,
+              border-radius 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.48s;
+  will-change: transform, opacity, border-radius;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.dc-modal.dc-active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+  border-radius: 14px;
+  pointer-events: auto;
+}
+
+/* Inner content transition during expand/collapse */
+.dc-card-body,
+.dc-modal-footer,
+.dc-close-btn {
+  transition: opacity 0.32s ease 0.06s, transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dc-modal:not(.dc-active) .dc-card-body,
+.dc-modal:not(.dc-active) .dc-modal-footer,
+.dc-modal:not(.dc-active) .dc-close-btn {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+.dc-modal.dc-active .dc-card-body,
+.dc-modal.dc-active .dc-modal-footer,
+.dc-modal.dc-active .dc-close-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Drag handle (mobile only) */
+.dc-drag-handle {
+  display: none;
+}
+
+/* Close Button */
+.dc-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(var(--gold-rgb), 0.25);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  z-index: 10;
+  padding: 0;
+}
+
+.dc-close-btn:hover {
+  background: rgba(var(--gold-rgb), 0.16);
+  border-color: var(--gold);
+  color: var(--gold-light);
+  transform: scale(1.06);
+}
+
+.dc-close-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---- Card Body (Exportable surface) ---- */
+.dc-card-body {
+  background: linear-gradient(160deg, #102c2f 0%, #081a1c 100%);
+  border: 1px solid rgba(var(--gold-rgb), 0.28);
+  border-radius: 10px;
+  padding: 28px 22px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Subtle corner aura */
+.dc-card-body::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(var(--gold-rgb), 0.12), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Header */
+.dc-header {
+  margin-bottom: 12px;
+}
+
+.dc-logo-container {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: #fbf5eb;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.dc-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  transform: scale(1.06);
+}
+
+.dc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+  margin: 0 0 6px;
+  line-height: 1.15;
+}
+
+.dc-tagline {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0;
+  padding: 0 8px;
+}
+
+/* Ornament Divider */
+.dc-ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0 20px;
+}
+
+.dc-line {
+  width: 44px;
+  height: 1px;
+  background: rgba(var(--gold-rgb), 0.3);
+}
+
+.dc-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* QR Code Section */
+.dc-qr-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.dc-qr-frame {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(var(--gold-rgb), 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  display: inline-flex;
+}
+
+.dc-qr-img {
+  width: 136px;
+  height: 136px;
+  display: block;
+  image-rendering: pixelated;
+}
+
+.dc-qr-caption {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+/* Contact Rows */
+.dc-contact-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.dc-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(var(--gold-rgb), 0.15);
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s var(--ease);
+}
+
+.dc-contact-row:hover {
+  background: rgba(var(--gold-rgb), 0.08);
+  border-color: rgba(var(--gold-rgb), 0.4);
+  transform: translateX(2px);
+}
+
+.dc-contact-row:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+.dc-row-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: rgba(var(--gold-rgb), 0.1);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dc-row-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.dc-row-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.dc-row-value {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.83rem;
+  color: var(--text-light);
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dc-address-row .dc-row-value {
+  white-space: normal;
+  word-break: normal;
+}
+
+/* Social Media Section */
+.dc-socials-block {
+  margin-bottom: 18px;
+}
+
+.dc-socials-heading {
+  display: block;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  margin-bottom: 9px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.dc-socials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.dc-social-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 6px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(var(--gold-rgb), 0.2);
+  border-radius: 4px;
+  color: var(--cream);
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  transition: all 0.25s var(--ease);
+}
+
+.dc-social-pill:hover {
+  background: rgba(var(--gold-rgb), 0.14);
+  border-color: var(--gold);
+  color: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+.dc-social-pill:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+/* Card Bottom Watermark */
+.dc-card-footer {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgba(var(--gold-rgb), 0.5);
+  text-align: center;
+  border-top: 1px solid rgba(var(--gold-rgb), 0.1);
+  padding-top: 12px;
+}
+
+/* ---- Modal Actions (Download & Status) ---- */
+.dc-modal-footer {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dc-download-action {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.dc-download-action:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.dc-export-status {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  text-align: center;
+  min-height: 18px;
+  line-height: 1.4;
+  transition: opacity 0.3s;
+}
+
+.dc-status-info { color: var(--gold-light); }
+.dc-status-success { color: #4ade80; }
+.dc-status-error { color: #f87171; }
+
+@keyframes dcSpin {
+  100% { transform: rotate(360deg); }
+}
+.dc-spin {
+  animation: dcSpin 0.9s linear infinite;
+}
+
+/* ============================================================
+   RESPONSIVE OVERRIDES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Position FAB above WhatsApp floating button which is at 96px */
+  .digital-card-fab {
+    bottom: calc(164px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 24px !important;
+    width: 50px;
+    height: 50px;
+  }
+  .digital-card-fab svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .dc-modal {
+    top: 50%;
+    left: 50%;
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+    max-height: 88vh;
+    max-height: 88dvh;
+    border-radius: 50%;
+    padding: 20px 14px 20px;
+  }
+
+  .dc-modal.dc-active {
+    transform: translate(-50%, -50%) scale(1);
+    border-radius: 16px;
+  }
+
+  .dc-drag-handle {
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: rgba(var(--gold-rgb), 0.35);
+    border-radius: 2px;
+    margin: 0 auto 14px;
+  }
+
+  .dc-card-body {
+    padding: 20px 16px 16px;
+  }
+
+  .dc-title {
+    font-size: 1.65rem;
+  }
+
+  .dc-qr-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .dc-socials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dc-social-pill {
+    padding: 10px;
+  }
+}

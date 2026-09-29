@@ -215,12 +215,94 @@
 #cta h2 { color: var(--bg-dark); }
 .cta-buttons { display: flex; flex-direction: column; gap: 16px; }
 
-/* Floating WA Button */
-#wa-btn { position: fixed; bottom: 32px; right: 32px; z-index: 900; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transform: scale(0); opacity: 0; transition: transform .5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity .5s; box-shadow: 0 4px 12px rgba(37,211,102,.3); }
-#wa-btn.show { transform: scale(1); opacity: 1; }
-#wa-btn svg { width: 30px; height: 30px; fill: currentColor; z-index: 2; }
-.wa-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid #25D366; animation: waring 2.5s infinite; z-index: 1; }
-@keyframes waring { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.7); opacity: 0; } }
+/* Floating WA Button (Styled to match luxury card design) */
+#wa-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 960;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #102c2f 0%, #0a2224 100%);
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 16px rgba(var(--gold-rgb), 0.2);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              opacity 0.45s,
+              box-shadow 0.3s,
+              border-color 0.3s,
+              color 0.3s;
+  outline: none;
+}
+#wa-btn.show {
+  transform: scale(1);
+  opacity: 1;
+}
+#wa-btn:hover {
+  transform: scale(1.08) translateY(-2px);
+  border-color: var(--gold-light);
+  color: var(--gold-light);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 0 24px rgba(var(--gold-rgb), 0.4);
+}
+#wa-btn:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+#wa-btn svg {
+  width: 25px;
+  height: 25px;
+  fill: var(--gold);
+  transition: fill 0.3s, transform 0.3s;
+  z-index: 2;
+}
+#wa-btn:hover svg {
+  fill: var(--gold-light);
+}
+.wa-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  opacity: 0;
+  animation: dcRingPulse 3.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  pointer-events: none;
+}
+.wa-fab-tooltip {
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: rgba(16, 44, 47, 0.96);
+  color: var(--gold-light);
+  border: 1px solid rgba(var(--gold-rgb), 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+#wa-btn:hover .wa-fab-tooltip,
+#wa-btn:focus-visible .wa-fab-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
 
 /* Corporate Wellness (New) */
 .corp-wellness-section { background: var(--bg-dark); padding: 120px 0; }

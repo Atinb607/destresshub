@@ -4,9 +4,11 @@
  * structured data (JSON-LD), and Google Analytics 4.
  */
 
-const SITE_URL = 'https://www.destresshub.com'
-const SITE_NAME = 'DeStress Hub'
-const DEFAULT_IMAGE = 'https://www.destresshub.com/logo%20new.png'
+import { BUSINESS_INFO } from '../config/business-info.js'
+
+const SITE_URL = BUSINESS_INFO.website
+const SITE_NAME = BUSINESS_INFO.name
+const DEFAULT_IMAGE = BUSINESS_INFO.logoFullUrl
 const GA_MEASUREMENT_ID = 'G-1D783SSKW5'
 
 /**
@@ -102,27 +104,27 @@ export function injectStructuredData() {
   setJsonLd('ld-organization', {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'DeStress Hub',
-    url: SITE_URL,
-    logo: DEFAULT_IMAGE,
-    description: 'DeStress Hub helps organizations improve employee wellbeing through stress management workshops, laughter wellness sessions, emotional intelligence training, employee engagement programs and corporate wellness initiatives.',
+    name: BUSINESS_INFO.name,
+    url: BUSINESS_INFO.website,
+    logo: BUSINESS_INFO.logoFullUrl,
+    description: BUSINESS_INFO.description,
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+91-9417765533',
+      telephone: BUSINESS_INFO.phoneTel,
       contactType: 'customer service',
-      areaServed: 'IN',
+      areaServed: BUSINESS_INFO.address.countryCode,
       availableLanguage: ['English', 'Hindi']
     },
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'SCO 75, Second Floor, Sector 40 C',
-      addressLocality: 'Chandigarh',
-      addressCountry: 'IN'
+      streetAddress: BUSINESS_INFO.address.street,
+      addressLocality: BUSINESS_INFO.address.city,
+      addressCountry: BUSINESS_INFO.address.countryCode
     },
     sameAs: [
-      'https://www.linkedin.com/company/destresshub',
-      'https://www.youtube.com/@D-StressHub',
-      'https://www.instagram.com/dstresshub/'
+      BUSINESS_INFO.socials.linkedin.url,
+      BUSINESS_INFO.socials.youtube.url,
+      BUSINESS_INFO.socials.instagram.url
     ]
   })
 

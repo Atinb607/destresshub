@@ -9,7 +9,7 @@ export function renderNavbar() {
       <a href="/" data-link class="nav-logo"><img src="/logo new.png" alt="DeStressHub" class="brand-logo-img"></a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="/rajat-avasthi" data-link>Wellness Coordinator</a></li>
+        <li><a href="/rajat-avasthi" data-link>About Founder</a></li>
         <li><a href="#sessions">Sessions</a></li>
         <li><a href="#how">How It Works</a></li>
         <li><a href="#pricing">Pricing</a></li>
@@ -25,7 +25,7 @@ export function renderNavbar() {
 
     <div class="mobile-nav" id="mobile-nav">
       <a href="#about" class="mob-link">About</a>
-      <a href="/rajat-avasthi" data-link class="mob-link">Wellness Coordinator</a>
+      <a href="/rajat-avasthi" data-link class="mob-link">About Founder</a>
       <a href="#sessions" class="mob-link">Sessions</a>
       <a href="#how" class="mob-link">How It Works</a>
       <a href="#pricing" class="mob-link">Pricing</a>

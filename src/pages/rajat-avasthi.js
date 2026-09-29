@@ -1,5 +1,5 @@
 /**
- * DeStressHub - Wellness Coordinator & Founder (Rajat Avasthi) Page
+ * DeStressHub - About Founder (Rajat Avasthi) Page
  */
 
 import { renderNavbar, initNavbar } from '../components/navbar.js'
@@ -27,7 +27,7 @@ export async function rajatAvasthiPage() {
         <div class="coord-hero-text">
           <div class="hero-eyebrow reveal d1">
             <div class="eyebrow-line"></div>
-            <span class="eyebrow-text">Wellness Coordinator & Founder</span>
+            <span class="eyebrow-text">About Founder</span>
           </div>
 
           <h1 class="reveal d2">
@@ -66,7 +66,7 @@ export async function rajatAvasthiPage() {
         <!-- Right: Portrait Frame with Floating Badges -->
         <div class="coord-portrait-wrap reveal right d2">
           <div class="coord-portrait-frame">
-            <img src="/collage-main.jpeg" alt="Rajat Avasthi - Wellness Coordinator & Founder, DeStressHub">
+            <img src="https://res.cloudinary.com/oyzd4zsd/image/upload/w_1000,f_auto,q_auto/1_bsujaz" alt="Rajat Avasthi - Founder, DeStressHub">
           </div>
 
           <!-- Top Badge -->
@@ -450,14 +450,14 @@ export async function rajatAvasthiPage() {
 
   const init = () => {
     updateSEO({
-      title: 'Rajat Avasthi | Founder & Wellness Coordinator | DeStress Hub',
-      description: 'Meet Rajat Avasthi, Founder & Wellness Coordinator at DeStressHub, Certified Laughter Yoga Leader, and MBA with 20+ years of leadership and organizational growth experience across India & the UK.',
+      title: 'Rajat Avasthi | About Founder | DeStress Hub',
+      description: 'Meet Rajat Avasthi, Founder at DeStressHub, Certified Laughter Yoga Leader, and MBA with 20+ years of leadership and organizational growth experience across India & the UK.',
       path: '/rajat-avasthi',
-      image: 'https://www.destresshub.com/collage-main.jpeg'
+      image: 'https://res.cloudinary.com/oyzd4zsd/image/upload/w_1000,f_auto,q_auto/1_bsujaz'
     })
     injectBreadcrumbs([
       { name: 'Home', url: '/' },
-      { name: 'Wellness Coordinator' }
+      { name: 'About Founder' }
     ])
 
     initNavbar()

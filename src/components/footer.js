@@ -18,7 +18,7 @@ export function renderFooter() {
         <div class="footer-col">
           <h4>Navigate</h4>
           <a href="#about">About Us</a>
-          <a href="/rajat-avasthi" data-link>Wellness Coordinator</a>
+          <a href="/rajat-avasthi" data-link>About Founder</a>
           <a href="#sessions">Sessions</a>
           <a href="#how">How It Works</a>
           <a href="#gallery">Gallery</a>
