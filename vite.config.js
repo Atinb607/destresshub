@@ -58,7 +58,7 @@ function galleryPhotosDevPlugin() {
               nextCursor = resp.next_cursor
             } while (nextCursor)
 
-            // Deduplicate heic/jpg pairs — prefer non-heic
+            // Deduplicate heic/jpg pairs - prefer non-heic
             const byBase = new Map()
             for (const item of results) {
               const base = item.public_id.replace(/_[a-z0-9]+$/i, '')
@@ -81,7 +81,7 @@ function galleryPhotosDevPlugin() {
           res.end(JSON.stringify({ photos, moments }))
         } catch (err) {
           const safeMsg = (err && err.error && err.error.message) || (typeof err.message === 'string' ? err.message : 'Unknown error')
-          console.error('Dev API — Cloudinary error:', safeMsg)
+          console.error('Dev API - Cloudinary error:', safeMsg)
           res.statusCode = 502
           res.setHeader('Content-Type', 'application/json')
           res.end(JSON.stringify({ photos: [], moments: [], error: 'upstream_error' }))

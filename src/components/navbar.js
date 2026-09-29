@@ -9,6 +9,7 @@ export function renderNavbar() {
       <a href="/" data-link class="nav-logo"><img src="/logo new.png" alt="DeStressHub" class="brand-logo-img"></a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="/rajat-avasthi" data-link>Wellness Coordinator</a></li>
         <li><a href="#sessions">Sessions</a></li>
         <li><a href="#how">How It Works</a></li>
         <li><a href="#pricing">Pricing</a></li>
@@ -24,13 +25,14 @@ export function renderNavbar() {
 
     <div class="mobile-nav" id="mobile-nav">
       <a href="#about" class="mob-link">About</a>
+      <a href="/rajat-avasthi" data-link class="mob-link">Wellness Coordinator</a>
       <a href="#sessions" class="mob-link">Sessions</a>
       <a href="#how" class="mob-link">How It Works</a>
       <a href="#pricing" class="mob-link">Pricing</a>
       <a href="/gallery" data-link class="mob-link">Gallery</a>
       <a href="/corporate" data-link class="mob-link">Corporate</a>
       <a href="/careers" data-link class="mob-link">Careers</a>
-      <a href="https://wa.me/9464663405" target="_blank" style="color:var(--gold)">Book Now →</a>
+      <a href="https://wa.me/9464663405" target="_blank" class="mob-link mob-cta">Book Now →</a>
     </div>
   `
 }
@@ -41,21 +43,65 @@ export function initNavbar() {
   const nav = document.getElementById('navbar')
   if (!ham || !mobNav) return
 
+  const closeMenu = () => {
+    ham.classList.remove('open')
+    mobNav.classList.remove('open')
+    document.body.style.overflow = ''
+  }
+
   // Hamburger toggle
   ham.addEventListener('click', () => {
-    ham.classList.toggle('open')
-    mobNav.classList.toggle('open')
-    document.body.style.overflow = mobNav.classList.contains('open') ? 'hidden' : ''
+    const willOpen = !mobNav.classList.contains('open')
+    ham.classList.toggle('open', willOpen)
+    mobNav.classList.toggle('open', willOpen)
+    document.body.style.overflow = willOpen ? 'hidden' : ''
   })
 
   // Close mobile nav on link click
   mobNav.querySelectorAll('.mob-link').forEach(link => {
     link.addEventListener('click', () => {
-      ham.classList.remove('open')
-      mobNav.classList.remove('open')
-      document.body.style.overflow = ''
+      closeMenu()
     })
   })
+
+  // Close when clicking directly on the overlay backdrop
+  mobNav.addEventListener('click', (e) => {
+    if (e.target === mobNav) {
+      closeMenu()
+    }
+  })
+
+  // Close on Escape key (global handler once)
+  if (!window._navEscBound) {
+    window._navEscBound = true
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const mNav = document.getElementById('mobile-nav')
+        const h = document.getElementById('hamburger')
+        if (mNav && mNav.classList.contains('open')) {
+          h?.classList.remove('open')
+          mNav.classList.remove('open')
+          document.body.style.overflow = ''
+        }
+      }
+    })
+  }
+
+  // Close when resized to desktop (global handler once)
+  if (!window._navResizeBound) {
+    window._navResizeBound = true
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1200) {
+        const mNav = document.getElementById('mobile-nav')
+        const h = document.getElementById('hamburger')
+        if (mNav && mNav.classList.contains('open')) {
+          h?.classList.remove('open')
+          mNav.classList.remove('open')
+          document.body.style.overflow = ''
+        }
+      }
+    })
+  }
 
   // Scroll effect
   const scrollHandler = () => {

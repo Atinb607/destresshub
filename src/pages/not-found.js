@@ -19,7 +19,7 @@ export async function notFoundPage() {
 
   const init = () => {
     updateSEO({
-      title: '404 — Page Not Found | DeStress Hub',
+      title: '404 | Page Not Found | DeStress Hub',
       description: 'The page you are looking for could not be found. Return to DeStress Hub homepage.',
       path: '/404'
     })

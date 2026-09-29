@@ -134,6 +134,9 @@ export async function homePage() {
               </div>
             </div>
           </div>
+          <div style="margin-top:36px;">
+            <a href="/rajat-avasthi" data-link class="btn-outline">Meet Our Wellness Coordinator →</a>
+          </div>
         </div>
       </div>
     </section>
@@ -204,7 +207,7 @@ export async function homePage() {
       <div class="strip-overlay"></div>
       <div class="strip-content reveal up">
         <h2 class="strip-quote">"Laughter is the shortest distance between two people."</h2>
-        <div class="strip-attr">— Victor Borge</div>
+        <div class="strip-attr">- Victor Borge</div>
       </div>
     </section>
 
@@ -343,7 +346,7 @@ export async function homePage() {
       <div class="strip-overlay"></div>
       <div class="strip-content reveal up">
         <h2 class="strip-quote">"We don't laugh because we're happy, we're happy because we laugh."</h2>
-        <div class="strip-attr">— William James</div>
+        <div class="strip-attr">- William James</div>
       </div>
     </section>
 
@@ -459,7 +462,8 @@ export async function homePage() {
             tag: 'Investment',
             title: 'CUSTOM PRICING FOR EVERY TEAM',
             description: "Every session is tailored to your team size and goals. Get in touch, we'll share a plan that fits.",
-            theme: 'light'
+            theme: 'light',
+            align: 'center'
           })}
           <div style="margin-top: 24px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
             <a href="${waLink("Hi! I'd like to book a session.")}" target="_blank" class="btn-gold">Contact Us</a>

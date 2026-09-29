@@ -1,5 +1,5 @@
 /**
- * Gallery Page — Session Photos, Moments, and HR Video Testimonials
+ * Gallery Page - Session Photos, Moments, and HR Video Testimonials
  */
 
 import { renderNavbar, initNavbar } from '../components/navbar.js'
@@ -15,7 +15,7 @@ import 'glightbox/dist/css/glightbox.min.css'
 /* ---- Cloudinary URL builders ---- */
 const CLOUD = 'oyzd4zsd'
 
-// Video builders (unchanged — manual config, w_720 cap)
+// Video builders (unchanged - manual config, w_720 cap)
 function videoThumbUrl(publicId) {
   return `https://res.cloudinary.com/${CLOUD}/video/upload/so_0,w_640,h_360,c_fill,q_auto,f_jpg/${publicId}`
 }
@@ -23,7 +23,7 @@ function videoPlayUrl(publicId) {
   return `https://res.cloudinary.com/${CLOUD}/video/upload/q_auto,f_auto/${publicId}.mp4`
 }
 
-// Photo builders — capped transformations to control credit usage
+// Photo builders - capped transformations to control credit usage
 function photoThumbUrl(publicId) {
   return `https://res.cloudinary.com/${CLOUD}/image/upload/w_400,h_400,c_fill,q_auto,f_auto/${publicId}`
 }
@@ -140,7 +140,7 @@ export function galleryPage() {
 
   const init = () => {
     updateSEO({
-      title: 'Gallery | DeStress Hub — Session Photos & Testimonials',
+      title: 'Gallery | DeStress Hub | Session Photos & Testimonials',
       description: 'Browse photos and video testimonials from DeStress Hub wellness sessions across organizations like iOTA, iCuerious, Punjab University, and more.',
       path: '/gallery'
     })

@@ -1,5 +1,5 @@
 /**
- * Custom cursor — gold dot + ring that follows mouse
+ * Custom cursor - gold dot + ring that follows mouse
  * Re-initialize after each page navigation to attach hover listeners
  */
 

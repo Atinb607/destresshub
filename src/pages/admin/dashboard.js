@@ -19,7 +19,7 @@ export async function adminDashboardPage() {
     return jobs.map(job => `
       <tr>
         <td><strong>${job.title}</strong></td>
-        <td>${job.department || '—'}</td>
+        <td>${job.department || ''}</td>
         <td><span class="status-badge ${job.status}">${job.status}</span></td>
         <td>${formatDate(job.created_at)}</td>
         <td>

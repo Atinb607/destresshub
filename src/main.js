@@ -1,5 +1,5 @@
 /**
- * DeStressHub — Main Application Entry
+ * DeStressHub - Main Application Entry
  * Imports styles, registers routes, and initializes the SPA
  */
 
@@ -10,6 +10,7 @@ import './styles/navbar.css'
 import './styles/home.css'
 import './styles/careers.css'
 import './styles/corporate.css'
+import './styles/coordinator.css'
 import './styles/admin.css'
 import './styles/gallery.css'
 import './styles/responsive.css'
@@ -39,6 +40,7 @@ import { adminDashboardPage } from './pages/admin/dashboard.js'
 import { adminJobFormPage } from './pages/admin/job-form.js'
 import { notFoundPage } from './pages/not-found.js'
 import { galleryPage } from './pages/gallery.js'
+import { rajatAvasthiPage } from './pages/rajat-avasthi.js'
 import { inject } from '@vercel/analytics'
 
 /* ============================================================
@@ -47,6 +49,8 @@ import { inject } from '@vercel/analytics'
 
 route('/', async () => homePage())
 route('/corporate', async () => corporatePage())
+route('/rajat-avasthi', async () => rajatAvasthiPage())
+route('/wellness-coordinator', async () => rajatAvasthiPage())
 route('/careers', async () => careersPage())
 route('/careers/job/:slug', async (params) => jobDetailPage(params))
 route('/case-studies', async () => caseStudiesPage())

@@ -1,5 +1,5 @@
 /**
- * Sticky mobile CTA bar — fixed at bottom on mobile devices
+ * Sticky mobile CTA bar - fixed at bottom on mobile devices
  * Shows WhatsApp, Call Now, and Corporate Enquiry buttons
  */
 

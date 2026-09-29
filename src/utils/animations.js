@@ -23,7 +23,7 @@ export function initRevealAnimations() {
 }
 
 /**
- * Animated counter — counts up from 0 to target number
+ * Animated counter - counts up from 0 to target number
  * Usage: <span data-count="5000">0</span>
  */
 export function initCounterAnimations() {

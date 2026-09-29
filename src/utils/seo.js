@@ -1,5 +1,5 @@
 /**
- * DeStressHub — SEO & Analytics Utilities
+ * DeStressHub - SEO & Analytics Utilities
  * Manages per-page meta tags, Open Graph, Twitter Cards, canonical URLs,
  * structured data (JSON-LD), and Google Analytics 4.
  */

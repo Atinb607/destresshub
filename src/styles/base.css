@@ -1,5 +1,5 @@
 /* ============================================================
-   BASE — Reset, Variables, Typography, Cursor, Scrollbar, Reveal
+   BASE - Reset, Variables, Typography, Cursor, Scrollbar, Reveal
    ============================================================ */
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -60,12 +60,13 @@ img { max-width: 100%; height: auto; }
   --strip-bg-2: linear-gradient(45deg, #2a221a, #3a2a1a);
 }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; width: 100%; }
 body {
   font-family: 'Jost', sans-serif;
   background: var(--bg-dark);
   color: var(--text-light);
   overflow-x: hidden;
+  width: 100%;
   cursor: none;
 }
 

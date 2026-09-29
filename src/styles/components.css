@@ -1,11 +1,26 @@
 /* ============================================================
-   COMPONENTS — Buttons, Section Tags, Ticker, Stats, Logos
+   COMPONENTS - Buttons, Section Tags, Ticker, Stats, Logos
    ============================================================ */
 
 /* Section Tag */
 .section-tag { display: inline-flex; align-items: center; gap: 16px; margin-bottom: 24px; }
 .section-tag .line { width: 32px; height: 1px; background: var(--gold); }
 .section-tag span { font-size: .68rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+
+/* Section Description */
+.section-desc {
+  font-size: .95rem;
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 640px;
+}
+[style*="text-align:center"] .section-desc,
+[style*="text-align: center"] .section-desc,
+.text-center .section-desc {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
 
 /* Buttons */
 .btn-gold, .btn-outline, .btn-dark, .btn-wa, .nav-cta, .gallery-view-all, .job-apply-btn, .admin-btn {

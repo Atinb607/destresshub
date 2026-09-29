@@ -1,7 +1,7 @@
 import { v2 as cloudinary } from 'cloudinary'
 
 /**
- * Vercel Serverless Function — /api/gallery-photos
+ * Vercel Serverless Function - /api/gallery-photos
  *
  * Lists photo assets from Cloudinary folders Gallery/Photos and Gallery/Moments
  * using the Admin API. Credentials are read exclusively from environment variables.

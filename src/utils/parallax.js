@@ -1,5 +1,5 @@
 /**
- * Parallax effects — hero background and strip backgrounds
+ * Parallax effects - hero background and strip backgrounds
  * Call initParallax() after page render, and cleanupParallax() on page leave
  */
 
