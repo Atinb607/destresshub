@@ -11,9 +11,11 @@ export const BUSINESS_INFO = {
   tagline: 'Healing through laughter, one joyful session at a time.',
   description: 'DeStress Hub helps organizations improve employee wellbeing through stress management workshops, laughter wellness sessions, emotional intelligence training, employee engagement programs and corporate wellness initiatives.',
   
-  // Contact
-  phone: '+91 9417765533',
-  phoneTel: '+919417765533',
+  // Contact: Work Number 1 (Primary) & Work Number 2
+  phone: '+91 9464663405',
+  phoneTel: '+919464663405',
+  phone2: '+91 9417765533',
+  phone2Tel: '+919417765533',
   whatsapp: '+91 9464663405',
   whatsappUrl: 'https://wa.me/9464663405',
   
@@ -21,13 +23,14 @@ export const BUSINESS_INFO = {
   // contact sections, or SEO metadata. Kept as null so consumers can gracefully omit it.
   email: null,
 
-  // Address
+  // Address & Google Maps Location
   address: {
     street: 'SCO 75, Second Floor, Sector 40 C',
     city: 'Chandigarh',
     country: 'India',
     countryCode: 'IN',
-    full: 'SCO 75, Second Floor, Sector 40 C, Chandigarh'
+    full: 'SCO 75, Second Floor, Sector 40 C, Chandigarh',
+    mapUrl: 'https://maps.app.goo.gl/iWWXgW3je6m2sfHQ6'
   },
 
   // Website

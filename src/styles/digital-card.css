@@ -415,9 +415,34 @@ body.dc-modal-open {
   text-overflow: ellipsis;
 }
 
+.dc-address-row {
+  cursor: pointer;
+}
+
+.dc-address-row:hover {
+  border-color: rgba(var(--gold-rgb), 0.5);
+}
+
 .dc-address-row .dc-row-value {
   white-space: normal;
   word-break: normal;
+}
+
+.dc-row-ext {
+  color: var(--gold-light);
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+  flex-shrink: 0;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.dc-contact-row:hover .dc-row-ext {
+  opacity: 1;
+  transform: translate(2px, -2px);
+  color: var(--gold);
 }
 
 /* Social Media Section */
@@ -484,27 +509,170 @@ body.dc-modal-open {
   padding-top: 12px;
 }
 
-/* ---- Modal Actions (Download & Status) ---- */
+/* ---- Card Action Controls (Save to Contacts, Download, Share, Copy) ---- */
 .dc-modal-footer {
   margin-top: 16px;
   display: flex;
   flex-direction: column;
+}
+
+.dc-actions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.dc-actions-primary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.dc-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  box-sizing: border-box;
+  min-height: 44px; /* Accessible touch target */
+  text-align: center;
+}
+
+.dc-vcard-action {
+  background: var(--gold);
+  color: var(--bg-dark);
+  border: 1.5px solid var(--gold);
+  box-shadow: 0 4px 14px rgba(var(--gold-rgb), 0.25);
+}
+
+.dc-vcard-action:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  color: #051415;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(var(--gold-rgb), 0.35);
+}
+
+.dc-vcard-action:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 2px;
 }
 
 .dc-download-action {
-  width: 100%;
-  padding: 14px 20px;
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 500;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--gold-light);
+  border: 1.5px solid rgba(var(--gold-rgb), 0.45);
+}
+
+.dc-download-action:hover {
+  background: rgba(var(--gold-rgb), 0.14);
+  border-color: var(--gold);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.dc-download-action:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 
 .dc-download-action:disabled {
   opacity: 0.65;
   cursor: not-allowed;
   transform: none !important;
+}
+
+/* Secondary Share & Copy Row */
+.dc-share-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(var(--gold-rgb), 0.12);
+}
+
+.dc-share-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(var(--gold-rgb), 0.25);
+  border-radius: 20px;
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.22s var(--ease);
+  min-height: 36px;
+}
+
+.dc-share-pill-btn:hover {
+  background: rgba(var(--gold-rgb), 0.15);
+  border-color: var(--gold);
+  color: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+.dc-share-pill-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Copy Confirmation State */
+.dc-copy-action.dc-copied {
+  background: rgba(74, 222, 128, 0.18) !important;
+  border-color: #4ade80 !important;
+  color: #4ade80 !important;
+}
+
+.dc-quick-share-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.dc-quick-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(var(--gold-rgb), 0.22);
+  color: var(--cream);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.22s var(--ease);
+}
+
+.dc-quick-share-btn:hover {
+  background: rgba(var(--gold-rgb), 0.18);
+  border-color: var(--gold);
+  color: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+.dc-quick-share-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 
 .dc-export-status {
@@ -525,6 +693,126 @@ body.dc-modal-open {
 }
 .dc-spin {
   animation: dcSpin 0.9s linear infinite;
+}
+
+/* ============================================================
+   STANDALONE DIGITAL CARD PAGE (/card)
+   ============================================================ */
+
+.dc-standalone-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg-dark);
+  background-image: 
+    radial-gradient(ellipse at 50% 10%, rgba(var(--gold-rgb), 0.08) 0%, rgba(10, 34, 36, 0) 65%),
+    radial-gradient(circle at 85% 85%, rgba(16, 44, 47, 0.5) 0%, transparent 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px 40px;
+  box-sizing: border-box;
+}
+
+.dc-standalone-wrap {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Top Back Bar */
+.dc-back-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+.dc-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  transition: color 0.25s var(--ease);
+}
+
+.dc-back-link:hover {
+  color: var(--gold-light);
+}
+
+.dc-back-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.dc-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--gold);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(var(--gold-rgb), 0.1);
+  border: 1px solid rgba(var(--gold-rgb), 0.25);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* Standalone Card Frame */
+.dc-standalone-card {
+  background: var(--bg-dark);
+  border: 1px solid rgba(var(--gold-rgb), 0.35);
+  border-radius: 14px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), 0 0 45px rgba(var(--gold-rgb), 0.1);
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dc-standalone-footer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 8px;
+}
+
+.dc-helper-note {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.dc-helper-note strong {
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+.dc-copyright {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.04em;
+}
+
+/* Hide Floating Buttons and Mobile CTA Bar when on /card page */
+body.dc-page-active #digital-card-btn,
+body.dc-page-active #wa-btn,
+body.dc-page-active .mobile-cta-bar {
+  display: none !important;
 }
 
 /* ============================================================
@@ -591,4 +879,30 @@ body.dc-modal-open {
   .dc-social-pill {
     padding: 10px;
   }
+
+  .dc-standalone-page {
+    padding: 20px 12px 30px;
+  }
+
+  .dc-standalone-card {
+    padding: 18px 12px;
+  }
 }
+
+@media (max-width: 380px) {
+  .dc-actions-primary {
+    grid-template-columns: 1fr;
+  }
+
+  .dc-share-row {
+    flex-wrap: wrap;
+  }
+
+  .dc-quick-share-group {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+    margin-top: 4px;
+  }
+}
+

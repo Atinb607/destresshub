@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite'
 import { v2 as cloudinary } from 'cloudinary'
-import { readFileSync } from 'fs'
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs'
 import { resolve } from 'path'
+import { BUSINESS_INFO } from './src/config/business-info.js'
+import { generateVCard } from './src/utils/vcard.js'
 
 // Load .env into process.env for the dev server middleware.
-// Vite only auto-exposes VITE_-prefixed vars; the Cloudinary secrets
-// intentionally don't use that prefix (they must stay server-only).
 try {
   const envPath = resolve(process.cwd(), '.env')
   const envContent = readFileSync(envPath, 'utf-8')
@@ -19,10 +19,9 @@ try {
     if (!process.env[key]) process.env[key] = val
   }
 } catch (_) { /* .env may not exist in CI */ }
+
 /**
- * Vite dev plugin that intercepts /api/gallery-photos requests locally,
- * so `npm run dev` works without needing the Vercel CLI.
- * The same Cloudinary Admin API logic as the serverless function runs inline.
+ * Vite dev plugin that intercepts /api/gallery-photos requests locally.
  */
 function galleryPhotosDevPlugin() {
   return {
@@ -91,15 +90,63 @@ function galleryPhotosDevPlugin() {
   }
 }
 
+/**
+ * Plugin to automatically maintain public/destresshub.vcf from single source of truth (BUSINESS_INFO)
+ * and serve /destresshub.vcf and /api/vcard with proper headers during local development.
+ */
+function vcardPlugin() {
+  const syncVCardFile = () => {
+    try {
+      const vcard = generateVCard(BUSINESS_INFO)
+      const publicDir = resolve(process.cwd(), 'public')
+      if (!existsSync(publicDir)) {
+        mkdirSync(publicDir, { recursive: true })
+      }
+      writeFileSync(resolve(publicDir, 'destresshub.vcf'), vcard, 'utf-8')
+    } catch (err) {
+      console.warn('Unable to write static public/destresshub.vcf:', err)
+    }
+  }
+
+  // Sync on startup
+  syncVCardFile()
+
+  return {
+    name: 'vcard-plugin',
+    buildStart() {
+      syncVCardFile()
+    },
+    configureServer(server) {
+      const serveVCard = (req, res) => {
+        const vcard = generateVCard(BUSINESS_INFO)
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'text/vcard; charset=utf-8')
+        res.setHeader('Content-Disposition', 'inline; filename="destresshub.vcf"')
+        res.setHeader('Cache-Control', 'public, max-age=3600')
+        res.end(vcard)
+      }
+
+      server.middlewares.use('/destresshub.vcf', serveVCard)
+      server.middlewares.use('/api/vcard', serveVCard)
+    }
+  }
+}
+
 export default defineConfig({
   root: '.',
   build: {
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: resolve(process.cwd(), 'index.html'),
+        card: resolve(process.cwd(), 'card.html'),
+      }
+    }
   },
   server: {
     port: 3000,
     open: true
   },
-  plugins: [galleryPhotosDevPlugin()],
+  plugins: [galleryPhotosDevPlugin(), vcardPlugin()],
 })

@@ -1,0 +1,25 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//DeStress Hub//Digital Business Card//EN
+FN:DeStress Hub
+ORG:DeStress Hub
+N:;;;;
+X-ABShowAs:COMPANY
+TITLE:Healing through laughter\, one joyful session at a time.
+TEL;TYPE=WORK,VOICE;TYPE=pref:+919464663405
+item1.TEL;TYPE=WORK,VOICE:+919417765533
+item1.X-ABLabel:Work 2
+ADR;TYPE=WORK:;;SCO 75\, Second Floor\, Sector 40 C;Chandigarh;;;India
+item2.URL:https://maps.app.goo.gl/iWWXgW3je6m2sfHQ6
+item2.X-ABLabel:Google Maps
+URL:https://www.destresshub.com
+item3.URL:https://www.destresshub.com/card
+item3.X-ABLabel:Digital Card
+item4.URL:https://www.instagram.com/dstresshub/
+item4.X-ABLabel:Instagram
+item5.URL:https://www.linkedin.com/company/destresshub
+item5.X-ABLabel:LinkedIn
+item6.URL:https://www.youtube.com/@D-StressHub
+item6.X-ABLabel:YouTube
+NOTE:Healing through laughter\, one joyful session at a time. • DeStress Hub helps organizations improve employee wellbeing through stress management workshops\, laughter wellness sessions\, emotional intelligence training\, employee engagement programs and corporate wellness initiatives.
+END:VCARD

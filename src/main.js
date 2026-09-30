@@ -43,6 +43,7 @@ import { adminJobFormPage } from './pages/admin/job-form.js'
 import { notFoundPage } from './pages/not-found.js'
 import { galleryPage } from './pages/gallery.js'
 import { rajatAvasthiPage } from './pages/rajat-avasthi.js'
+import { cardPage } from './pages/card.js'
 import { inject } from '@vercel/analytics'
 
 /* ============================================================
@@ -50,6 +51,7 @@ import { inject } from '@vercel/analytics'
    ============================================================ */
 
 route('/', async () => homePage())
+route('/card', async () => cardPage())
 route('/corporate', async () => corporatePage())
 route('/rajat-avasthi', async () => rajatAvasthiPage())
 route('/about-founder', async () => rajatAvasthiPage())

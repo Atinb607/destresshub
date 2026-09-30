@@ -7,12 +7,22 @@
     {
       "source": "/sitemap.xml",
       "headers": [{ "key": "Content-Type", "value": "application/xml" }]
+    },
+    {
+      "source": "/destresshub.vcf",
+      "headers": [
+        { "key": "Content-Type", "value": "text/vcard; charset=utf-8" },
+        { "key": "Content-Disposition", "value": "inline; filename=\"destresshub.vcf\"" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" }
+      ]
     }
   ],
   "rewrites": [
     { "source": "/robots.txt", "destination": "/robots.txt" },
     { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
+    { "source": "/destresshub.vcf", "destination": "/destresshub.vcf" },
+    { "source": "/card", "destination": "/card.html" },
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
-}
+}

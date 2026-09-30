@@ -9,13 +9,13 @@ import { submitLead } from '../supabase.js'
 import { updateSEO, injectBreadcrumbs } from '../utils/seo.js'
 
 
-import tanishqLogo from './tanishq-seeklogo.svg'
 import rootsLogo from './roots-analysis-logo.png'
 import icueriousLogo from './icuerious-logo.jpg'
 import edChdLogo from './ed-chd-logo.jpg'
 import rajivGandhiLogo from './Rajiv_Gandhi_National_Institute_of_Youth_Development_Logo.png'
 import iotaLogo from './iota.jpg'
 import nexusSelectTrustLogo from './nexusselecttrust-logo.png'
+import bniLogo from './BNI.png'
 
 export async function homePage() {
   const html = `
@@ -146,13 +146,13 @@ export async function homePage() {
       <div class="logo-inner reveal up">
         ${sectionHeader({ tag: 'Trusted By', title: 'Leading organizations<br/><em>choose DeStressHub.</em>', theme: 'light' })}
         <div class="logo-grid">
-          <div class="logo-item"><img src="${tanishqLogo}" alt="Tanishq"></div>
           <div class="logo-item"><img src="${rootsLogo}" alt="Roots Analysis"></div>
           <div class="logo-item"><img src="${icueriousLogo}" alt="ICuerious"></div>
           <div class="logo-item"><img src="${edChdLogo}" alt="Education Chandigarh"></div>
           <div class="logo-item"><img src="${rajivGandhiLogo}" alt="Rajiv Gandhi National Institute"></div>
           <div class="logo-item"><img src="${iotaLogo}" alt="Iota"></div>
           <div class="logo-item"><img src="${nexusSelectTrustLogo}" alt="Nexus Select Trust"></div>
+          <div class="logo-item"><img src="${bniLogo}" alt="BNI"></div>
         </div>
       </div>
     </section>
