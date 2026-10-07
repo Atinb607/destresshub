@@ -157,6 +157,8 @@ export function initRouter() {
     const href = link.getAttribute('href')
     if (href && href !== window.location.pathname) {
       navigate(href)
+    } else if (href === '/' && window.location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   })
 

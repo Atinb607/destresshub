@@ -13,6 +13,15 @@ export function renderCursor() {
   `
 }
 
+export function resetCursor() {
+  const cur = document.getElementById('cursor')
+  if (cur) {
+    cur.style.width = '10px'
+    cur.style.height = '10px'
+    cur.style.background = 'var(--gold)'
+  }
+}
+
 export function initCursor() {
   const cur = document.getElementById('cursor')
   const ring = document.getElementById('cursor-ring')
@@ -23,11 +32,29 @@ export function initCursor() {
   // Remove old listener if any
   if (moveHandler) document.removeEventListener('mousemove', moveHandler)
 
+  const interactiveSelector = 'a, button, [role="button"], [role="radio"], .quiz-option-btn, .session-card, .g-frame, .testi-card, .p-card, .job-card, [data-hover]'
+
   moveHandler = (e) => {
     mx = e.clientX
     my = e.clientY
     cur.style.left = mx + 'px'
     cur.style.top = my + 'px'
+
+    // Dynamically check whether current mouse position is over an interactive element
+    const isInteractive = Boolean(e.target?.closest?.(interactiveSelector))
+    if (isInteractive) {
+      if (cur.style.width !== '18px') {
+        cur.style.width = '18px'
+        cur.style.height = '18px'
+        cur.style.background = 'var(--gold-light)'
+      }
+    } else {
+      if (cur.style.width !== '10px') {
+        cur.style.width = '10px'
+        cur.style.height = '10px'
+        cur.style.background = 'var(--gold)'
+      }
+    }
   }
   document.addEventListener('mousemove', moveHandler)
 
@@ -43,24 +70,10 @@ export function initCursor() {
   }
   animRing()
 
-  // Hover effects on interactive elements
-  refreshCursorHovers()
+  // Reset to default size
+  resetCursor()
 }
 
 export function refreshCursorHovers() {
-  const cur = document.getElementById('cursor')
-  if (!cur) return
-
-  document.querySelectorAll('a, button, .session-card, .g-frame, .testi-card, .p-card, .job-card, [data-hover]').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cur.style.width = '18px'
-      cur.style.height = '18px'
-      cur.style.background = 'var(--gold-light)'
-    })
-    el.addEventListener('mouseleave', () => {
-      cur.style.width = '10px'
-      cur.style.height = '10px'
-      cur.style.background = 'var(--gold)'
-    })
-  })
+  resetCursor()
 }

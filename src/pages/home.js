@@ -51,6 +51,21 @@ export async function homePage() {
       </div>
     </section>
 
+    <!-- Stress Quiz Thin Banner Strip -->
+    <section class="quiz-strip" aria-label="Stress Assessment Quiz">
+      <div class="quiz-strip-inner">
+        <div class="quiz-strip-left">
+          <span class="quiz-strip-pill">Free Assessment</span>
+          <p class="quiz-strip-text">How stressed are you, really? <strong>Take our 3-minute Stress Level Quiz</strong> to discover your wellbeing score.</p>
+        </div>
+        <a href="/stress-quiz" data-link class="quiz-strip-btn">
+          <span>Take the Quiz</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </section>
 
     <!-- Trust Stats -->
     <div class="stats-strip">

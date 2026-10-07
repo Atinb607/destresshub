@@ -14,6 +14,7 @@ import './styles/coordinator.css'
 import './styles/admin.css'
 import './styles/gallery.css'
 import './styles/digital-card.css'
+import './styles/stress-quiz.css'
 import './styles/responsive.css'
 
 /* ---- Router ---- */
@@ -44,6 +45,7 @@ import { notFoundPage } from './pages/not-found.js'
 import { galleryPage } from './pages/gallery.js'
 import { rajatAvasthiPage } from './pages/rajat-avasthi.js'
 import { cardPage } from './pages/card.js'
+import { stressQuizPage } from './pages/stress-quiz.js'
 import { inject } from '@vercel/analytics'
 
 /* ============================================================
@@ -51,6 +53,7 @@ import { inject } from '@vercel/analytics'
    ============================================================ */
 
 route('/', async () => homePage())
+route('/stress-quiz', async () => stressQuizPage())
 route('/card', async () => cardPage())
 route('/corporate', async () => corporatePage())
 route('/rajat-avasthi', async () => rajatAvasthiPage())
