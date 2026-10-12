@@ -61,9 +61,18 @@ export function generateVCard(info = BUSINESS_INFO) {
   lines.push(`item1.TEL;TYPE=WORK,VOICE:${phone2}`)
   lines.push('item1.X-ABLabel:Work 2')
 
-  // Email (Omit if null or missing)
-  if (info.email) {
-    lines.push(`EMAIL;TYPE=WORK,INTERNET:${escapeVCard(info.email)}`)
+  // Work Email (info@destresshub.com)
+  const workEmail = info.email || info.workEmail
+  if (workEmail) {
+    lines.push(`EMAIL;TYPE=WORK,INTERNET;TYPE=pref:${escapeVCard(workEmail)}`)
+  }
+
+  // Founder Email (rajat@destresshub.com)
+  let itemIdx = 2
+  if (info.founderEmail) {
+    lines.push(`item${itemIdx}.EMAIL;TYPE=INTERNET:${escapeVCard(info.founderEmail)}`)
+    lines.push(`item${itemIdx}.X-ABLabel:Founder Email`)
+    itemIdx++
   }
 
   // Address (RFC 2426: ADR;TYPE=WORK:;;street;city;state;postalCode;country)
@@ -75,7 +84,6 @@ export function generateVCard(info = BUSINESS_INFO) {
   }
 
   // Google Maps Location Link
-  let itemIdx = 2
   if (info.address && info.address.mapUrl) {
     lines.push(`item${itemIdx}.URL:${info.address.mapUrl}`)
     lines.push(`item${itemIdx}.X-ABLabel:Google Maps`)

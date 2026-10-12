@@ -11,7 +11,7 @@ export const BUSINESS_INFO = {
   tagline: 'Healing through laughter, one joyful session at a time.',
   description: 'DeStress Hub helps organizations improve employee wellbeing through stress management workshops, laughter wellness sessions, emotional intelligence training, employee engagement programs and corporate wellness initiatives.',
   
-  // Contact: Work Number 1 (Primary) & Work Number 2
+  // Contact: Work Number 1 (Primary & WhatsApp) & Work Number 2
   phone: '+91 9464663405',
   phoneTel: '+919464663405',
   phone2: '+91 9417765533',
@@ -19,9 +19,10 @@ export const BUSINESS_INFO = {
   whatsapp: '+91 9464663405',
   whatsappUrl: 'https://wa.me/9464663405',
   
-  // NOTE: Public contact email is not specified anywhere in the site footer,
-  // contact sections, or SEO metadata. Kept as null so consumers can gracefully omit it.
-  email: null,
+  // Emails
+  email: 'info@destresshub.com', // Work Email (Primary)
+  workEmail: 'info@destresshub.com',
+  founderEmail: 'rajat@destresshub.com', // Founder Email
 
   // Address & Google Maps Location
   address: {
