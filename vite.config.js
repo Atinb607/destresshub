@@ -71,19 +71,47 @@ function galleryPhotosDevPlugin() {
             return Array.from(byBase.values())
           }
 
-          const [photos, moments] = await Promise.all([
+          async function listMeetAndGreetFolder() {
+            const candidates = [
+              'Gallery/Meet and Greet',
+              'Gallery/meet and greet',
+              'Gallery/Meet & Greet',
+              'Gallery/meet-and-greet',
+              'Gallery/Meet-and-Greet',
+              'Gallery/Meet & greet',
+              'Gallery/Meet and greet',
+              'meet and greet',
+              'Meet and Greet',
+              'Meet & Greet',
+              'meet-and-greet',
+              'Meet-and-Greet',
+              'Meet & greet',
+              'Meet and greet'
+            ]
+
+            for (const folder of candidates) {
+              try {
+                const list = await listFolder(folder)
+                if (list && list.length > 0) return list
+              } catch (_) {}
+            }
+            return []
+          }
+
+          const [photos, moments, meetAndGreet] = await Promise.all([
             listFolder('Gallery/Photos'),
             listFolder('Gallery/Moments'),
+            listMeetAndGreetFolder(),
           ])
 
           res.setHeader('Content-Type', 'application/json')
-          res.end(JSON.stringify({ photos, moments }))
+          res.end(JSON.stringify({ photos, moments, meetAndGreet }))
         } catch (err) {
           const safeMsg = (err && err.error && err.error.message) || (typeof err.message === 'string' ? err.message : 'Unknown error')
           console.error('Dev API - Cloudinary error:', safeMsg)
           res.statusCode = 502
           res.setHeader('Content-Type', 'application/json')
-          res.end(JSON.stringify({ photos: [], moments: [], error: 'upstream_error' }))
+          res.end(JSON.stringify({ photos: [], moments: [], meetAndGreet: [], error: 'upstream_error' }))
         }
       })
     },

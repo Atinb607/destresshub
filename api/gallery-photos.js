@@ -24,17 +24,22 @@ async function listFolder(folderPath) {
   const results = []
   let nextCursor = undefined
 
-  do {
-    const resp = await cloudinary.api.resources_by_asset_folder(folderPath, {
-      max_results: 500,
-      resource_type: 'image',
-      ...(nextCursor && { next_cursor: nextCursor }),
-    })
-    for (const r of resp.resources) {
-      results.push({ public_id: r.public_id, format: r.format })
-    }
-    nextCursor = resp.next_cursor
-  } while (nextCursor)
+  try {
+    do {
+      const resp = await cloudinary.api.resources_by_asset_folder(folderPath, {
+        max_results: 500,
+        resource_type: 'image',
+        ...(nextCursor && { next_cursor: nextCursor }),
+      })
+      for (const r of resp.resources) {
+        results.push({ public_id: r.public_id, format: r.format })
+      }
+      nextCursor = resp.next_cursor
+    } while (nextCursor)
+  } catch (err) {
+    // If folder doesn't exist, return empty array
+    return []
+  }
 
   // Deduplicate: when the same base image exists as both .heic and .jpg,
   // keep only the non-heic version (avoids redundant transformation).
@@ -56,6 +61,33 @@ async function listFolder(folderPath) {
   return Array.from(byBase.values())
 }
 
+async function listMeetAndGreetFolder() {
+  const candidates = [
+    'Gallery/Meet and Greet',
+    'Gallery/meet and greet',
+    'Gallery/Meet & Greet',
+    'Gallery/meet-and-greet',
+    'Gallery/Meet-and-Greet',
+    'Gallery/Meet & greet',
+    'Gallery/Meet and greet',
+    'meet and greet',
+    'Meet and Greet',
+    'Meet & Greet',
+    'meet-and-greet',
+    'Meet-and-Greet',
+    'Meet & greet',
+    'Meet and greet'
+  ]
+
+  for (const folder of candidates) {
+    const list = await listFolder(folder)
+    if (list && list.length > 0) {
+      return list
+    }
+  }
+  return []
+}
+
 export default async function handler(req, res) {
   // Only allow GET
   if (req.method !== 'GET') {
@@ -64,9 +96,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const [photos, moments] = await Promise.all([
+    const [photos, moments, meetAndGreet] = await Promise.all([
       listFolder('Gallery/Photos'),
       listFolder('Gallery/Moments'),
+      listMeetAndGreetFolder(),
     ])
 
     // CDN cache for 1 hour, serve stale for up to 24h during revalidation
@@ -76,9 +109,9 @@ export default async function handler(req, res) {
     )
     res.setHeader('Content-Type', 'application/json')
 
-    return res.status(200).json({ photos, moments })
+    return res.status(200).json({ photos, moments, meetAndGreet })
   } catch (err) {
     console.error('Cloudinary Admin API error:', (err && err.error && err.error.message) || (typeof err.message === 'string' ? err.message : 'Unknown error'))
-    return res.status(502).json({ photos: [], moments: [], error: 'upstream_error' })
+    return res.status(502).json({ photos: [], moments: [], meetAndGreet: [], error: 'upstream_error' })
   }
 }

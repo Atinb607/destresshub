@@ -98,6 +98,7 @@ export function galleryPage() {
         <button class="gallery-tab active" data-tab="all">All</button>
         <button class="gallery-tab" data-tab="photos">Session Photos</button>
         <button class="gallery-tab" data-tab="moments">Moments of Laughter</button>
+        <button class="gallery-tab" data-tab="meet-greet">Meet & Greet</button>
         <button class="gallery-tab" data-tab="videos">Testimonials and Feedbacks</button>
       </div>
 
@@ -120,6 +121,17 @@ export function galleryPage() {
         </div>
         <div class="photo-grid reveal up" id="moments-grid">
           ${renderPhotoSkeleton(12, 'moments')}
+        </div>
+      </section>
+
+      <!-- Meet & Greet -->
+      <section class="gallery-section" id="gallery-meet-greet" data-section="meet-greet">
+        <div class="gallery-section-title reveal up">
+          <div class="line"></div>
+          <h3>Meet & Greet</h3>
+        </div>
+        <div class="photo-grid reveal up" id="meet-greet-grid">
+          ${renderPhotoSkeleton(8, 'meet-greet')}
         </div>
       </section>
 
@@ -156,9 +168,10 @@ export function galleryPage() {
     // ── Photo lightbox instances (will be initialized after photos load) ──
     let photoLightbox1 = null
     let photoLightbox2 = null
+    let photoLightbox3 = null
 
     /**
-     * Fetch photos from the serverless API and populate both grids.
+     * Fetch photos from the serverless API and populate all grids.
      * On failure, the skeleton placeholders are replaced with a brief message.
      */
     async function loadPhotos() {
@@ -182,17 +195,29 @@ export function galleryPage() {
         } else if (momentsGrid) {
           momentsGrid.innerHTML = '<p class="gallery-empty">Moment photos are currently unavailable.</p>'
         }
+
+        // Populate Meet & Greet grid
+        const meetGreetGrid = document.getElementById('meet-greet-grid')
+        const meetGreetPhotos = data.meetAndGreet || data.meet_greet || []
+        if (meetGreetGrid && meetGreetPhotos.length > 0) {
+          meetGreetGrid.innerHTML = renderPhotoGrid(meetGreetPhotos, 'meet-greet', 'Meet & Greet photo')
+        } else if (meetGreetGrid) {
+          meetGreetGrid.innerHTML = '<p class="gallery-empty">Meet & Greet photos are currently unavailable.</p>'
+        }
       } catch (err) {
         console.warn('Gallery photo load failed, showing fallback:', err.message)
         const photosGrid = document.getElementById('photos-grid')
         const momentsGrid = document.getElementById('moments-grid')
+        const meetGreetGrid = document.getElementById('meet-greet-grid')
         if (photosGrid) photosGrid.innerHTML = '<p class="gallery-empty">Photos could not be loaded. Please try again later.</p>'
         if (momentsGrid) momentsGrid.innerHTML = '<p class="gallery-empty">Photos could not be loaded. Please try again later.</p>'
+        if (meetGreetGrid) meetGreetGrid.innerHTML = '<p class="gallery-empty">Photos could not be loaded. Please try again later.</p>'
       }
 
       // Initialize (or re-initialize) GLightbox for the freshly inserted photos
       if (photoLightbox1) { try { photoLightbox1.destroy() } catch (_) { /* noop */ } }
       if (photoLightbox2) { try { photoLightbox2.destroy() } catch (_) { /* noop */ } }
+      if (photoLightbox3) { try { photoLightbox3.destroy() } catch (_) { /* noop */ } }
 
       photoLightbox1 = GLightbox({
         selector: '.glightbox-sessions',
@@ -206,6 +231,16 @@ export function galleryPage() {
 
       photoLightbox2 = GLightbox({
         selector: '.glightbox-moments',
+        touchNavigation: true,
+        loop: true,
+        zoomable: true,
+        draggable: true,
+        openEffect: 'fade',
+        closeEffect: 'fade',
+      })
+
+      photoLightbox3 = GLightbox({
+        selector: '.glightbox-meet-greet',
         touchNavigation: true,
         loop: true,
         zoomable: true,

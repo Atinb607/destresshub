@@ -112,6 +112,13 @@ nav.scrolled {
     grid-template-columns: 1fr !important;
     gap: 48px !important;
   }
+  .why-hr-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .why-hr-media {
+    position: static !important;
+  }
 }
 
 @media (max-width: 767px) {
