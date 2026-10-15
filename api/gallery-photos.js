@@ -61,8 +61,18 @@ async function listFolder(folderPath) {
   return Array.from(byBase.values())
 }
 
-async function listMeetAndGreetFolder() {
+async function listInternationalMeetingsFolder() {
   const candidates = [
+    'Gallery/International Meetings',
+    'Gallery/international meetings',
+    'Gallery/International-Meetings',
+    'Gallery/international-meetings',
+    'Gallery/International meetings',
+    'International Meetings',
+    'international meetings',
+    'International-Meetings',
+    'international-meetings',
+    'International meetings',
     'Gallery/Meet and Greet',
     'Gallery/meet and greet',
     'Gallery/Meet & Greet',
@@ -96,10 +106,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const [photos, moments, meetAndGreet] = await Promise.all([
+    const [photos, moments, internationalMeetings] = await Promise.all([
       listFolder('Gallery/Photos'),
       listFolder('Gallery/Moments'),
-      listMeetAndGreetFolder(),
+      listInternationalMeetingsFolder(),
     ])
 
     // CDN cache for 1 hour, serve stale for up to 24h during revalidation
@@ -109,9 +119,20 @@ export default async function handler(req, res) {
     )
     res.setHeader('Content-Type', 'application/json')
 
-    return res.status(200).json({ photos, moments, meetAndGreet })
+    return res.status(200).json({
+      photos,
+      moments,
+      internationalMeetings,
+      meetAndGreet: internationalMeetings
+    })
   } catch (err) {
     console.error('Cloudinary Admin API error:', (err && err.error && err.error.message) || (typeof err.message === 'string' ? err.message : 'Unknown error'))
-    return res.status(502).json({ photos: [], moments: [], meetAndGreet: [], error: 'upstream_error' })
+    return res.status(502).json({
+      photos: [],
+      moments: [],
+      internationalMeetings: [],
+      meetAndGreet: [],
+      error: 'upstream_error'
+    })
   }
 }

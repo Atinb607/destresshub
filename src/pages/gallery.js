@@ -98,7 +98,7 @@ export function galleryPage() {
         <button class="gallery-tab active" data-tab="all">All</button>
         <button class="gallery-tab" data-tab="photos">Session Photos</button>
         <button class="gallery-tab" data-tab="moments">Moments of Laughter</button>
-        <button class="gallery-tab" data-tab="meet-greet">Meet & Greet</button>
+        <button class="gallery-tab" data-tab="international-meetings">International Meetings</button>
         <button class="gallery-tab" data-tab="videos">Testimonials and Feedbacks</button>
       </div>
 
@@ -124,14 +124,14 @@ export function galleryPage() {
         </div>
       </section>
 
-      <!-- Meet & Greet -->
-      <section class="gallery-section" id="gallery-meet-greet" data-section="meet-greet">
+      <!-- International Meetings -->
+      <section class="gallery-section" id="gallery-international-meetings" data-section="international-meetings">
         <div class="gallery-section-title reveal up">
           <div class="line"></div>
-          <h3>Meet & Greet</h3>
+          <h3>International Meetings</h3>
         </div>
-        <div class="photo-grid reveal up" id="meet-greet-grid">
-          ${renderPhotoSkeleton(8, 'meet-greet')}
+        <div class="photo-grid reveal up" id="international-meetings-grid">
+          ${renderPhotoSkeleton(8, 'international-meetings')}
         </div>
       </section>
 
@@ -196,22 +196,22 @@ export function galleryPage() {
           momentsGrid.innerHTML = '<p class="gallery-empty">Moment photos are currently unavailable.</p>'
         }
 
-        // Populate Meet & Greet grid
-        const meetGreetGrid = document.getElementById('meet-greet-grid')
-        const meetGreetPhotos = data.meetAndGreet || data.meet_greet || []
-        if (meetGreetGrid && meetGreetPhotos.length > 0) {
-          meetGreetGrid.innerHTML = renderPhotoGrid(meetGreetPhotos, 'meet-greet', 'Meet & Greet photo')
-        } else if (meetGreetGrid) {
-          meetGreetGrid.innerHTML = '<p class="gallery-empty">Meet & Greet photos are currently unavailable.</p>'
+        // Populate International Meetings grid
+        const intlGrid = document.getElementById('international-meetings-grid') || document.getElementById('meet-greet-grid')
+        const intlPhotos = data.internationalMeetings || data.international_meetings || data.meetAndGreet || data.meet_greet || []
+        if (intlGrid && intlPhotos.length > 0) {
+          intlGrid.innerHTML = renderPhotoGrid(intlPhotos, 'international-meetings', 'International meeting photo')
+        } else if (intlGrid) {
+          intlGrid.innerHTML = '<p class="gallery-empty">International Meetings photos are currently unavailable.</p>'
         }
       } catch (err) {
         console.warn('Gallery photo load failed, showing fallback:', err.message)
         const photosGrid = document.getElementById('photos-grid')
         const momentsGrid = document.getElementById('moments-grid')
-        const meetGreetGrid = document.getElementById('meet-greet-grid')
+        const intlGrid = document.getElementById('international-meetings-grid') || document.getElementById('meet-greet-grid')
         if (photosGrid) photosGrid.innerHTML = '<p class="gallery-empty">Photos could not be loaded. Please try again later.</p>'
         if (momentsGrid) momentsGrid.innerHTML = '<p class="gallery-empty">Photos could not be loaded. Please try again later.</p>'
-        if (meetGreetGrid) meetGreetGrid.innerHTML = '<p class="gallery-empty">Photos could not be loaded. Please try again later.</p>'
+        if (intlGrid) intlGrid.innerHTML = '<p class="gallery-empty">Photos could not be loaded. Please try again later.</p>'
       }
 
       // Initialize (or re-initialize) GLightbox for the freshly inserted photos
@@ -240,7 +240,7 @@ export function galleryPage() {
       })
 
       photoLightbox3 = GLightbox({
-        selector: '.glightbox-meet-greet',
+        selector: '.glightbox-international-meetings, .glightbox-meet-greet',
         touchNavigation: true,
         loop: true,
         zoomable: true,

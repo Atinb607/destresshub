@@ -71,8 +71,18 @@ function galleryPhotosDevPlugin() {
             return Array.from(byBase.values())
           }
 
-          async function listMeetAndGreetFolder() {
+          async function listInternationalMeetingsFolder() {
             const candidates = [
+              'Gallery/International Meetings',
+              'Gallery/international meetings',
+              'Gallery/International-Meetings',
+              'Gallery/international-meetings',
+              'Gallery/International meetings',
+              'International Meetings',
+              'international meetings',
+              'International-Meetings',
+              'international-meetings',
+              'International meetings',
               'Gallery/Meet and Greet',
               'Gallery/meet and greet',
               'Gallery/Meet & Greet',
@@ -98,20 +108,31 @@ function galleryPhotosDevPlugin() {
             return []
           }
 
-          const [photos, moments, meetAndGreet] = await Promise.all([
+          const [photos, moments, internationalMeetings] = await Promise.all([
             listFolder('Gallery/Photos'),
             listFolder('Gallery/Moments'),
-            listMeetAndGreetFolder(),
+            listInternationalMeetingsFolder(),
           ])
 
           res.setHeader('Content-Type', 'application/json')
-          res.end(JSON.stringify({ photos, moments, meetAndGreet }))
+          res.end(JSON.stringify({
+            photos,
+            moments,
+            internationalMeetings,
+            meetAndGreet: internationalMeetings
+          }))
         } catch (err) {
           const safeMsg = (err && err.error && err.error.message) || (typeof err.message === 'string' ? err.message : 'Unknown error')
           console.error('Dev API - Cloudinary error:', safeMsg)
           res.statusCode = 502
           res.setHeader('Content-Type', 'application/json')
-          res.end(JSON.stringify({ photos: [], moments: [], meetAndGreet: [], error: 'upstream_error' }))
+          res.end(JSON.stringify({
+            photos: [],
+            moments: [],
+            internationalMeetings: [],
+            meetAndGreet: [],
+            error: 'upstream_error'
+          }))
         }
       })
     },
