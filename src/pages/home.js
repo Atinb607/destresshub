@@ -287,7 +287,7 @@ export async function homePage() {
             <h3 class="impact-stat-label">Higher Profitability</h3>
             <p class="impact-stat-desc">Healthier, happier, and more engaged teams can contribute to stronger organizational performance.</p>
             <div class="impact-stat-source">
-              <span class="impact-source-title">Source: Gallup — Employee Engagement Research</span>
+              <span class="impact-source-title">Source: Gallup Employee Engagement Research</span>
               <p class="impact-source-note">Gallup reports that business units with highly engaged employees achieve 23% higher profitability than those with lower engagement.</p>
               <a href="https://www.gallup.com/workplace/285674/improve-employee-engagement-workplace.aspx" target="_blank" rel="noopener noreferrer" class="impact-source-link">Read Gallup's research ↗</a>
             </div>
@@ -308,7 +308,7 @@ export async function homePage() {
             <h3 class="impact-stat-label">Lower Absenteeism</h3>
             <p class="impact-stat-desc">Prioritizing employee wellbeing can help organizations foster healthier workplaces and more consistent attendance.</p>
             <div class="impact-stat-source">
-              <span class="impact-source-title">Source: Gallup — Q12 Meta-Analysis</span>
+              <span class="impact-source-title">Source: Gallup Q12 Meta-Analysis</span>
               <p class="impact-source-note">Gallup reports 78% less absenteeism among top-quartile employee-engagement business units compared with bottom-quartile units.</p>
               <a href="https://www.gallup.com/workplace/321725/employee-engagement.aspx" target="_blank" rel="noopener noreferrer" class="impact-source-link">Read Gallup's research summary ↗</a>
             </div>
