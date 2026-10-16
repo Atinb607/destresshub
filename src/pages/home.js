@@ -235,6 +235,103 @@ export async function homePage() {
       </div>
     </section>
 
+    <!-- Workplace Wellbeing Impact Statistics Section -->
+    <section class="wellbeing-impact-section" id="wellbeing-impact">
+      <div class="wellbeing-impact-inner">
+        <div class="wellbeing-impact-header reveal up">
+          <div class="wellbeing-impact-title-col">
+            ${sectionHeader({
+              tag: 'THE BUSINESS CASE FOR WELLBEING',
+              title: 'When People Feel Better,<br/><em>Workplaces Thrive.</em>',
+              theme: 'light'
+            })}
+          </div>
+          <div class="wellbeing-impact-intro-col">
+            <p class="wellbeing-impact-lead">Workplace wellbeing is more than a feel-good initiative. It can support healthier employees, stronger engagement, and better business outcomes. Investing in people helps create a workplace where individuals and teams can thrive.</p>
+          </div>
+        </div>
+
+        <div class="impact-stats-grid">
+          <article class="impact-stat-card reveal up d1">
+            <div class="impact-stat-top">
+              <span class="impact-stat-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"/>
+                  <path d="M9 21h6"/>
+                  <path d="M10 9.5c.6.8 1.3 1.2 2 1.2s1.4-.4 2-1.2"/>
+                </svg>
+              </span>
+              <span class="impact-stat-index">01</span>
+            </div>
+            <div class="impact-stat-value">31.9%</div>
+            <h3 class="impact-stat-label">Lower Cortisol Levels</h3>
+            <p class="impact-stat-desc">Support stress reduction and promote mental wellbeing through science-informed wellness practices.</p>
+          </article>
+
+          <article class="impact-stat-card reveal up d2">
+            <div class="impact-stat-top">
+              <span class="impact-stat-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+                  <polyline points="16 7 22 7 22 13"/>
+                </svg>
+              </span>
+              <span class="impact-stat-index">02</span>
+            </div>
+            <div class="impact-stat-value">23%</div>
+            <h3 class="impact-stat-label">Higher Profitability</h3>
+            <p class="impact-stat-desc">Healthier, happier, and more engaged teams can contribute to stronger organizational performance.</p>
+          </article>
+
+          <article class="impact-stat-card reveal up d3">
+            <div class="impact-stat-top">
+              <span class="impact-stat-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <polyline points="16 11 18 13 22 9"/>
+                </svg>
+              </span>
+              <span class="impact-stat-index">03</span>
+            </div>
+            <div class="impact-stat-value">78%</div>
+            <h3 class="impact-stat-label">Lower Absenteeism</h3>
+            <p class="impact-stat-desc">Prioritizing employee wellbeing can help organizations foster healthier workplaces and more consistent attendance.</p>
+          </article>
+
+          <article class="impact-stat-card reveal up d4">
+            <div class="impact-stat-top">
+              <span class="impact-stat-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/>
+                  <path d="M12 6v2m0 8v2"/>
+                </svg>
+              </span>
+              <span class="impact-stat-index">04</span>
+            </div>
+            <div class="impact-stat-value">$4.70</div>
+            <h3 class="impact-stat-label">Return per $1 Invested</h3>
+            <p class="impact-stat-desc">Workplace wellbeing initiatives can offer meaningful potential value when employee health and organizational outcomes improve.</p>
+          </article>
+        </div>
+
+        <div class="impact-brand-panel reveal up d2">
+          <div class="impact-brand-content">
+            <h3 class="impact-brand-headline">Small Moments of Joy. <em>Meaningful Workplace Impact.</em></h3>
+            <div class="impact-brand-copy">
+              <p>At DeStressHub, we help organizations bring more laughter, connection, and positivity into the workplace through engaging laughter wellness sessions, stress management workshops, and employee wellbeing programs.</p>
+              <p>Our approach combines intentional laughter, breathing techniques, and interactive group experiences to help teams manage stress, reconnect, and build a healthier workplace culture.</p>
+            </div>
+            <div class="impact-brand-footer">
+              <p class="impact-brand-closing">Because when people feel better, workplaces can thrive.</p>
+              <a href="/corporate" data-link class="btn-gold impact-brand-cta">Explore Corporate Wellness Programs</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Corporate Wellness -->
     <section class="corp-wellness-section">
       <div class="max-w reveal up">

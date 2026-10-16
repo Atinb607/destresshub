@@ -154,6 +154,7 @@
 
 /* Parallax Strips */
 .parallax-strip { height: 560px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; }
+.parallax-strip.strip-1 { height: 340px; }
 .strip-bg { position: absolute; inset: -100px 0; z-index: 1; }
 .strip-overlay { position: absolute; inset: 0; z-index: 2; background: rgba(var(--bg-dark-rgb),.65); backdrop-filter: blur(2px); }
 .strip-content { position: relative; z-index: 3; max-width: 800px; padding: 0 40px; }
@@ -342,6 +343,195 @@
   transform: translateY(-50%) translateX(0);
 }
 
+/* Workplace Wellbeing Impact Statistics Section */
+.wellbeing-impact-section {
+  background: var(--bg-light);
+  padding: 120px 0;
+  position: relative;
+  border-bottom: 1px solid rgba(10, 34, 36, 0.06);
+}
+.wellbeing-impact-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 72px;
+}
+.wellbeing-impact-header {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: flex-end;
+  margin-bottom: 64px;
+}
+.wellbeing-impact-intro-col {
+  border-left: 2px solid var(--gold);
+  padding-left: 28px;
+}
+.wellbeing-impact-lead {
+  font-size: 0.96rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--text-body);
+}
+.impact-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 56px;
+}
+.impact-stat-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(10, 34, 36, 0.08);
+  border-radius: 2px;
+  padding: 36px 28px 34px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(10, 34, 36, 0.04);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+.impact-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.impact-stat-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(var(--gold-rgb), 0.55);
+  box-shadow: 0 16px 38px rgba(10, 34, 36, 0.09);
+}
+.impact-stat-card:hover::before {
+  transform: scaleX(1);
+}
+.impact-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.impact-stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-off);
+  border: 1px solid rgba(var(--gold-rgb), 0.35);
+  color: var(--olive);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.impact-stat-card:hover .impact-stat-icon {
+  background: var(--bg-dark);
+  color: var(--gold);
+  border-color: var(--bg-dark);
+}
+.impact-stat-index {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  color: rgba(10, 34, 36, 0.28);
+  font-weight: 500;
+}
+.impact-stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 3.6vw, 3.3rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.impact-stat-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(10, 34, 36, 0.08);
+}
+.impact-stat-desc {
+  font-size: 0.87rem;
+  font-weight: 300;
+  line-height: 1.72;
+  color: var(--text-body);
+  flex: 1;
+}
+
+/* Brand Connection Panel */
+.impact-brand-panel {
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 100%);
+  border: 1px solid rgba(var(--gold-rgb), 0.25);
+  border-radius: 2px;
+  padding: 56px 64px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(10, 34, 36, 0.14);
+}
+.impact-brand-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 20%, rgba(var(--gold-rgb), 0.12) 0%, transparent 55%);
+  pointer-events: none;
+}
+.impact-brand-content {
+  position: relative;
+  z-index: 1;
+}
+.impact-brand-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.85rem, 3vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--text-light);
+  margin-bottom: 24px;
+}
+.impact-brand-headline em {
+  font-style: italic;
+  color: var(--gold);
+}
+.impact-brand-copy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  margin-bottom: 32px;
+}
+.impact-brand-copy p {
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.82;
+  color: var(--text-muted);
+}
+.impact-brand-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 28px;
+  border-top: 1px solid rgba(252, 244, 229, 0.1);
+}
+.impact-brand-closing {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.4;
+}
+.impact-brand-cta {
+  flex-shrink: 0;
+}
+
 /* Corporate Wellness (New) */
 .corp-wellness-section { background: var(--bg-dark); padding: 120px 0; }
 .corp-grid { max-width: 1200px; margin: auto; padding: 0 72px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; }
@@ -397,6 +587,13 @@
 .lead-progress .step.active { background: var(--gold); }
 
 /* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .impact-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .wellbeing-impact-header { grid-template-columns: 1fr; gap: 28px; margin-bottom: 48px; }
+  .impact-brand-copy { grid-template-columns: 1fr; gap: 18px; }
+  .impact-brand-panel { padding: 44px 40px; }
+}
+
 @media (max-width: 960px) {
   .about-grid { grid-template-columns: 1fr; gap: 60px; }
   .about-text { max-width: 100%; }
@@ -417,11 +614,15 @@
 }
 
 @media (max-width: 768px) {
-  .hero-inner, .about-grid, .sessions-inner, .how-inner, .gallery-header, .gallery-track, .pricing-inner, .testi-inner, .cta-inner, .corp-grid, .case-grid, .reviews-inner, .lead-inner, .stats-grid { padding-left: 24px; padding-right: 24px; }
+  .hero-inner, .about-grid, .sessions-inner, .how-inner, .gallery-header, .gallery-track, .pricing-inner, .testi-inner, .cta-inner, .corp-grid, .case-grid, .reviews-inner, .lead-inner, .stats-grid, .wellbeing-impact-inner { padding-left: 24px; padding-right: 24px; }
   .hero-image-col { display: none; }
   #hero h1 { font-size: 3rem; }
   .scroll-hint { display: none; }
-  #about, #sessions, #how, #gallery, #pricing, #testimonials, #cta, .corp-wellness-section, .case-section, .reviews-section, .lead-section, .why-hr-section { padding: 80px 0; }
+  #about, #sessions, #how, #gallery, #pricing, #testimonials, #cta, .corp-wellness-section, .case-section, .reviews-section, .lead-section, .why-hr-section, .wellbeing-impact-section { padding: 80px 0; }
+  .parallax-strip.strip-1 { height: 260px; }
+  .impact-brand-panel { padding: 36px 28px; }
+  .impact-brand-footer { flex-direction: column; align-items: flex-start; }
+  .impact-brand-cta { width: 100%; justify-content: center; }
 }
 
 /* Intermediate zoom-friendly breakpoint */
@@ -437,6 +638,7 @@
   .cta-buttons { flex-direction: column; }
   .corp-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .impact-stats-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 540px) {
