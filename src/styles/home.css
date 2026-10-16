@@ -466,6 +466,51 @@
   color: var(--text-body);
   flex: 1;
 }
+.impact-stat-source {
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(10, 34, 36, 0.08);
+  opacity: 0.5;
+  transition: opacity 0.3s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.impact-stat-card:hover .impact-stat-source,
+.impact-stat-source:hover {
+  opacity: 0.9;
+}
+.impact-source-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+.impact-source-note {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+.impact-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--olive);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-top: 2px;
+  transition: color 0.25s var(--ease);
+}
+.impact-source-link:hover {
+  color: var(--gold);
+}
 
 /* Brand Connection Panel */
 .impact-brand-panel {

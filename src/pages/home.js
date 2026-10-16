@@ -266,6 +266,11 @@ export async function homePage() {
             <div class="impact-stat-value">31.9%</div>
             <h3 class="impact-stat-label">Lower Cortisol Levels</h3>
             <p class="impact-stat-desc">Support stress reduction and promote mental wellbeing through science-informed wellness practices.</p>
+            <div class="impact-stat-source">
+              <span class="impact-source-title">Source: Kramer &amp; Leitao, PLOS ONE (2023)</span>
+              <p class="impact-source-note">A systematic review and meta-analysis of eight studies involving 315 participants found a 31.9% reduction in cortisol following laughter interventions compared with control groups.</p>
+              <a href="https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0286260" target="_blank" rel="noopener noreferrer" class="impact-source-link">Read the original research paper ↗</a>
+            </div>
           </article>
 
           <article class="impact-stat-card reveal up d2">
@@ -281,6 +286,11 @@ export async function homePage() {
             <div class="impact-stat-value">23%</div>
             <h3 class="impact-stat-label">Higher Profitability</h3>
             <p class="impact-stat-desc">Healthier, happier, and more engaged teams can contribute to stronger organizational performance.</p>
+            <div class="impact-stat-source">
+              <span class="impact-source-title">Source: Gallup — Employee Engagement Research</span>
+              <p class="impact-source-note">Gallup reports that business units with highly engaged employees achieve 23% higher profitability than those with lower engagement.</p>
+              <a href="https://www.gallup.com/workplace/285674/improve-employee-engagement-workplace.aspx" target="_blank" rel="noopener noreferrer" class="impact-source-link">Read Gallup's research ↗</a>
+            </div>
           </article>
 
           <article class="impact-stat-card reveal up d3">
@@ -297,6 +307,11 @@ export async function homePage() {
             <div class="impact-stat-value">78%</div>
             <h3 class="impact-stat-label">Lower Absenteeism</h3>
             <p class="impact-stat-desc">Prioritizing employee wellbeing can help organizations foster healthier workplaces and more consistent attendance.</p>
+            <div class="impact-stat-source">
+              <span class="impact-source-title">Source: Gallup — Q12 Meta-Analysis</span>
+              <p class="impact-source-note">Gallup reports 78% less absenteeism among top-quartile employee-engagement business units compared with bottom-quartile units.</p>
+              <a href="https://www.gallup.com/workplace/321725/employee-engagement.aspx" target="_blank" rel="noopener noreferrer" class="impact-source-link">Read Gallup's research summary ↗</a>
+            </div>
           </article>
 
           <article class="impact-stat-card reveal up d4">
@@ -313,6 +328,11 @@ export async function homePage() {
             <div class="impact-stat-value">$4.70</div>
             <h3 class="impact-stat-label">Return per $1 Invested</h3>
             <p class="impact-stat-desc">Workplace wellbeing initiatives can offer meaningful potential value when employee health and organizational outcomes improve.</p>
+            <div class="impact-stat-source">
+              <span class="impact-source-title">Source: Exact figure not verified</span>
+              <p class="impact-source-note">A frequently cited Health Affairs study instead reported approximately $3.27 in medical-cost savings and $2.73 in absenteeism-cost savings per dollar spent on workplace wellness programs.</p>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/20075081/" target="_blank" rel="noopener noreferrer" class="impact-source-link">Read the study in PubMed ↗</a>
+            </div>
           </article>
         </div>
 
