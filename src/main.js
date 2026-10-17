@@ -53,6 +53,9 @@ import { inject } from '@vercel/analytics'
    ============================================================ */
 
 route('/', async () => homePage())
+route('/why-choose-us', async () => homePage({ scrollTo: 'why-choose-us' }))
+route('/why-us', async () => homePage({ scrollTo: 'why-choose-us' }))
+route('/for-hr-leaders', async () => homePage({ scrollTo: 'why-choose-us' }))
 route('/stress-quiz', async () => stressQuizPage())
 route('/card', async () => cardPage())
 route('/corporate', async () => corporatePage())

@@ -17,6 +17,7 @@ export function renderNavbar() {
           </a>
           <ul class="dropdown-menu" aria-label="Home Submenu">
             <li><a href="#about" class="dropdown-item">About</a></li>
+            <li><a href="#why-choose-us" class="dropdown-item">Why Choose Us</a></li>
             <li><a href="#sessions" class="dropdown-item">Sessions</a></li>
             <li><a href="#how" class="dropdown-item">How It Works</a></li>
             <li><a href="#pricing" class="dropdown-item">Pricing</a></li>
@@ -46,6 +47,7 @@ export function renderNavbar() {
         </div>
         <div class="mob-submenu" id="mob-submenu">
           <a href="#about" class="mob-link mob-sublink">About</a>
+          <a href="#why-choose-us" class="mob-link mob-sublink">Why Choose Us</a>
           <a href="#sessions" class="mob-link mob-sublink">Sessions</a>
           <a href="#how" class="mob-link mob-sublink">How It Works</a>
           <a href="#pricing" class="mob-link mob-sublink">Pricing</a>

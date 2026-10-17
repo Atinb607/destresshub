@@ -7,10 +7,22 @@
 
 /* Why Should HR Book Us Section */
 .why-hr-section {
+  position: relative;
+  scroll-margin-top: 90px;
   background: #FFFFFF;
   padding: 100px 0;
   border-top: 1px solid rgba(0, 0, 0, .05);
   border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+.anchor-target {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  pointer-events: none;
+  scroll-margin-top: 90px;
 }
 .why-hr-inner {
   max-width: 1200px;

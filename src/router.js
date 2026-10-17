@@ -50,8 +50,10 @@ function extractParams(path, routePath) {
  * Find matching route for a given path
  */
 function matchRoute(path) {
+  // Strip query string and hash from path before matching routes
+  const pathOnly = (path || '/').split('?')[0].split('#')[0]
   // Remove trailing slash (except for root)
-  const cleanPath = path === '/' ? '/' : path.replace(/\/$/, '')
+  const cleanPath = pathOnly === '/' ? '/' : pathOnly.replace(/\/$/, '')
   
   for (const r of routes) {
     if (r.pattern.test(cleanPath)) {
@@ -116,12 +118,20 @@ async function render(path) {
       app.style.opacity = '1'
     })
 
-    // Scroll to top or to hash
-    if (window.location.hash) {
-      const target = document.querySelector(window.location.hash)
-      if (target) {
-        setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 100)
-      }
+    // Scroll to top or to hash / route-requested target
+    const targetSelector = window.location.hash || (result.scrollTo ? `#${result.scrollTo}` : null)
+    if (targetSelector) {
+      setTimeout(() => {
+        try {
+          let target = document.querySelector(targetSelector)
+          if (!target && (targetSelector === '#why-us' || targetSelector === '#for-hr-leaders')) {
+            target = document.getElementById('why-choose-us')
+          }
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' })
+          }
+        } catch (err) {}
+      }, 100)
     } else {
       window.scrollTo(0, 0)
     }
@@ -159,6 +169,9 @@ export function initRouter() {
       navigate(href)
     } else if (href === '/' && window.location.pathname === '/') {
       window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else if (href === '/why-choose-us' || href === '/why-us' || href === '/for-hr-leaders') {
+      const target = document.getElementById('why-choose-us')
+      if (target) target.scrollIntoView({ behavior: 'smooth' })
     }
   })
 
@@ -172,9 +185,13 @@ export function initRouter() {
 
     // If the target element exists in the current DOM, smooth scroll to it directly
     try {
-      const target = document.querySelector(hash)
+      let target = document.querySelector(hash)
+      if (!target && (hash === '#why-us' || hash === '#for-hr-leaders')) {
+        target = document.getElementById('why-choose-us')
+      }
       if (target) {
         e.preventDefault()
+        window.history.pushState(null, '', hash)
         target.scrollIntoView({ behavior: 'smooth' })
         return
       }
@@ -184,10 +201,14 @@ export function initRouter() {
 
     // If target is not on current page, navigate to home then scroll
     e.preventDefault()
+    window.location.hash = hash
     navigate('/')
     setTimeout(() => {
       try {
-        const target = document.querySelector(hash)
+        let target = document.querySelector(hash)
+        if (!target && (hash === '#why-us' || hash === '#for-hr-leaders')) {
+          target = document.getElementById('why-choose-us')
+        }
         if (target) target.scrollIntoView({ behavior: 'smooth' })
       } catch (err) {}
     }, 400)

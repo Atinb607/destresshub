@@ -17,7 +17,7 @@ import iotaLogo from './iota.jpg'
 import nexusSelectTrustLogo from './nexusselecttrust-logo.png'
 import bniLogo from './BNI.png'
 
-export async function homePage() {
+export async function homePage(params = {}) {
   const html = `
     ${renderNavbar()}
     
@@ -173,7 +173,9 @@ export async function homePage() {
     </section>
 
     <!-- Why Choose Us? -->
-    <section class="why-hr-section">
+    <section class="why-hr-section" id="why-choose-us">
+      <span id="why-us" class="anchor-target" aria-hidden="true"></span>
+      <span id="for-hr-leaders" class="anchor-target" aria-hidden="true"></span>
       <div class="why-hr-inner reveal up">
         ${sectionHeader({ tag: 'For HR Leaders', title: 'Why Choose<br/><em>Us?</em>', theme: 'light' })}
         <div class="why-hr-grid">
@@ -789,12 +791,25 @@ export async function homePage() {
   `
 
   const init = () => {
-    updateSEO({
-      title: 'DeStress Hub | Corporate Wellness, Employee Wellbeing & Laughter Wellness',
-      description: 'DeStress Hub helps organizations improve employee wellbeing through stress management workshops, laughter wellness sessions, emotional intelligence training, employee engagement programs and corporate wellness initiatives.',
-      path: '/'
-    })
-    injectBreadcrumbs([{ name: 'Home' }])
+    const scrollTo = params?.scrollTo
+    if (scrollTo === 'why-choose-us' || scrollTo === 'why-us' || scrollTo === 'for-hr-leaders') {
+      updateSEO({
+        title: 'Why Choose Us | DeStress Hub - Corporate Wellness & HR Solutions',
+        description: 'Why HR leaders choose DeStress Hub: Certified expertise, trusted by Tata Group, Tanishq & ICuerious, programs built for burnout prevention and flexible delivery.',
+        path: '/why-choose-us'
+      })
+      injectBreadcrumbs([
+        { name: 'Home', path: '/' },
+        { name: 'Why Choose Us' }
+      ])
+    } else {
+      updateSEO({
+        title: 'DeStress Hub | Corporate Wellness, Employee Wellbeing & Laughter Wellness',
+        description: 'DeStress Hub helps organizations improve employee wellbeing through stress management workshops, laughter wellness sessions, emotional intelligence training, employee engagement programs and corporate wellness initiatives.',
+        path: '/'
+      })
+      injectBreadcrumbs([{ name: 'Home' }])
+    }
 
     initNavbar()
     initRevealAnimations()
@@ -802,6 +817,22 @@ export async function homePage() {
     initParallax()
     initGalleryDrag()
     refreshCursorHovers()
+
+    // Smooth scroll to targeted section if requested by route or hash
+    const targetSection = scrollTo || (window.location.hash ? window.location.hash.slice(1) : null)
+    if (targetSection) {
+      const scrollIt = () => {
+        let el = document.getElementById(targetSection)
+        if (!el && (targetSection === 'why-us' || targetSection === 'for-hr-leaders')) {
+          el = document.getElementById('why-choose-us')
+        }
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
+      setTimeout(scrollIt, 120)
+      setTimeout(scrollIt, 400)
+    }
 
 
 
@@ -885,5 +916,5 @@ export async function homePage() {
     cleanupParallax()
   }
 
-  return { html, init, cleanup }
+  return { html, init, cleanup, scrollTo: params?.scrollTo }
 }
